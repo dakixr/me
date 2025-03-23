@@ -35,7 +35,7 @@ export default function ProjectsSection() {
       technologies: ['Python', 'Flask', 'API Integration', 'Plotly'],
     },
     {
-      title: 'Software Catalog (SOCA)',
+      title: 'SOCA',
       description: 'Command Line Interface tool for creating software catalogs from an organization URL.',
       link: 'https://github.com/oeg-upm/soca',
       image: '/projects/soca.jpg',
