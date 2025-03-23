@@ -93,8 +93,7 @@ export default function CVPage() {
             Back to Portfolio
           </motion.a>
           <motion.a 
-            href="/daniel_cv.md" 
-            download
+            href="/api/generate-pdf"
             className="px-3 py-1 text-sm rounded-md bg-accent text-white hover:bg-accent-dark transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

@@ -25,8 +25,7 @@ export default function CVSection() {
             </p>
             <div className="flex gap-4 flex-wrap justify-center">
               <motion.a 
-                href="/daniel_cv.md" 
-                download
+                href="/api/generate-pdf"
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-accent hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
