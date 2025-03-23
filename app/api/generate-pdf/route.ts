@@ -25,42 +25,106 @@ export async function GET(request: NextRequest) {
           <meta charset="utf-8">
           <title>Daniel's CV</title>
           <style>
+            /* General Styles */
             body {
-              font-family: 'Arial', sans-serif;
-              line-height: 1.6;
-              color: #333;
-              max-width: 800px;
-              margin: 0 auto;
-              padding: 20px;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 12px;
+                line-height: 1.6;
+                color: #000;
+                margin: 10px;
+                padding: 0;
             }
-            h1, h2, h3 {
-              color: #2c3e50;
+
+            /* Header Styles */
+            h1, h2, h3, h4, h5, h6 {
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bold;
+                color: #000;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 5px;
             }
-            h1 {
-              text-align: center;
-              border-bottom: 1px solid #eee;
-              padding-bottom: 10px;
+
+            /* Paragraph Styles */
+            p {
+                margin: 0 0 10px;
             }
-            h2 {
-              border-bottom: 1px solid #eee;
-              padding-bottom: 5px;
+
+            /* List Styles */
+            ul, ol {
+                margin: 0 0 10px 20px;
+                padding: 0;
             }
-            a {
-              color: #3498db;
-              text-decoration: none;
-            }
-            ul {
-              margin-top: 5px;
-            }
+
             li {
-              margin-bottom: 5px;
+                margin-bottom: 5px;
             }
-            .item {
-              margin-bottom: 15px;
+
+            /* Link Styles */
+            a {
+                color: #0366d6;
+                text-decoration: none;
+                position: relative;
             }
-            .date {
-              font-style: italic;
-              color: #7f8c8d;
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            a::after {
+                content: ' ↗'; /* This is the symbol that will appear after the link */
+                font-size: 0.9em; /* Adjust the size of the symbol */
+                color: #0366d6; /* Match the color of the symbol with the link color */
+            }
+
+            /* Horizontal Rule */
+            hr {
+                border: 0;
+                height: 1px;
+                background: #ddd;
+                margin: 20px 0;
+            }
+
+            /* Strong Text */
+            strong {
+                font-weight: bold;
+                color: #000;
+            }
+
+            /* Code Block Styles */
+            code, pre {
+                font-family: 'Courier New', Courier, monospace;
+                background-color: #f5f5f5;
+                padding: 2px 4px;
+                border-radius: 3px;
+                color: #c7254e;
+            }
+
+            /* Table Styles */
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f5f5f5;
+                font-weight: bold;
+            }
+
+            /* Footer Styles */
+            footer {
+                font-size: 10px;
+                text-align: center;
+                color: #777;
+                margin-top: 40px;
             }
           </style>
         </head>
@@ -83,10 +147,10 @@ export async function GET(request: NextRequest) {
       format: 'A4',
       printBackground: true,
       margin: {
-        top: '20px',
-        right: '20px',
-        bottom: '20px',
-        left: '20px',
+        top: '10mm',
+        right: '10mm',
+        bottom: '10mm',
+        left: '10mm',
       }
     });
 
