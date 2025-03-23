@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "node node_modules/puppeteer/install.js"
+    "postinstall": "npx puppeteer browsers install chrome"
   },
   "dependencies": {
     "framer-motion": "^11.0.3",

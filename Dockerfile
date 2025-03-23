@@ -23,8 +23,9 @@ RUN npm install -g pnpm
 # Copy package files
 COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile
+# Install dependencies with approved builds for puppeteer
+RUN echo "puppeteer" > .pnpmrc-approve \
+    && pnpm install --frozen-lockfile --approve-builds-filename=.pnpmrc-approve
 
 # Copy source code
 COPY . .
