@@ -86,7 +86,7 @@ export default function ProjectsSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
           >
-            Explore my recent work and personal projects that showcase my technical skills and problem-solving abilities.
+            Explore my recent personal projects that showcase my technical skills and problem-solving abilities.
           </motion.p>
         </div>
         
