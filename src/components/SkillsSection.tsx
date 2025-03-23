@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const skills = [
   {
     category: 'Languages',
-    items: ['Python', 'Java', 'C', 'Kotlin', 'Bash'],
+    items: ['Python', 'Java', 'C', 'Kotlin', 'JavaScript', 'TypeScript', 'Bash'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
@@ -14,7 +14,7 @@ const skills = [
   },
   {
     category: 'Web Development',
-    items: ['HTML', 'CSS', 'JavaScript', 'RESTful APIs', 'Django', 'HTMX'],
+    items: ['HTML', 'CSS', 'JavaScript', 'Django', 'Flask', 'HTMX', 'Alpine.js', 'Tailwind CSS', 'RESTful APIs'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
@@ -27,7 +27,7 @@ const skills = [
   },
   {
     category: 'Data & ML',
-    items: ['Machine Learning', 'Data Mining', 'Big Data Analytics'],
+    items: ['Machine Learning', 'Data Mining', 'Big Data Analytics', 'Data Analysis', 'Plotly', 'API Integration'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -38,7 +38,7 @@ const skills = [
   },
   {
     category: 'Libraries',
-    items: ['pandas', 'NumPy', 'scikit-learn', 'Keras'],
+    items: ['pandas', 'NumPy', 'scikit-learn', 'Keras', 'Celery', 'Jinja2'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -48,7 +48,7 @@ const skills = [
   },
   {
     category: 'Cloud & Databases',
-    items: ['AWS', 'SQL', 'NoSQL', 'Redshift', 'Data Warehousing'],
+    items: ['AWS', 'SQL', 'NoSQL', 'Redshift', 'PostgreSQL', 'Data Warehousing', 'Docker', 'CI/CD'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path>
@@ -58,7 +58,7 @@ const skills = [
   },
   {
     category: 'Tools',
-    items: ['Git', 'Jupyter', 'Unix/Linux', 'Docker'],
+    items: ['Git', 'Jupyter', 'Unix/Linux', 'Docker', 'Web Scraping', 'CLI Tools'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -69,7 +69,7 @@ const skills = [
   },
   {
     category: 'Methodologies',
-    items: ['Agile (Scrum)', 'DevOps', 'CI/CD'],
+    items: ['Agile (Scrum)', 'DevOps', 'CI/CD', 'Test-Driven Development'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="6" cy="6" r="3"></circle>
@@ -80,7 +80,7 @@ const skills = [
   },
   {
     category: 'Soft Skills',
-    items: ['Communication', 'Problem-Solving', 'Adaptability'],
+    items: ['Communication', 'Problem-Solving', 'Adaptability', 'Team Leadership'],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
