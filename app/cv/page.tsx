@@ -5,7 +5,6 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { usePageTransition } from '../../src/components/PageTransition';
 
@@ -112,7 +111,7 @@ export default function CVPage() {
         initial="initial"
         animate="animate"
       >
-        <h1 className="text-xl font-bold">Daniel Rodríguez Mariblanca - CV</h1>
+        <h1 className="text-xl font-bold">CV</h1>
         <div className="flex gap-4">
           <motion.a 
             href="/"
