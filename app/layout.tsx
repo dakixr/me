@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { PostHogProvider } from "../src/components/PostHogProvider";
+import { PageTransitionProvider, PageTransitionWrapper } from "../src/components/PageTransition";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning className={`${inter.className} bg-white dark:bg-dark text-gray-900 dark:text-gray-100 min-h-screen`}>
         <PostHogProvider>
-          <Providers>{children}</Providers>
+          <Providers>
+            <PageTransitionProvider>
+              <PageTransitionWrapper>
+                {children}
+              </PageTransitionWrapper>
+            </PageTransitionProvider>
+          </Providers>
         </PostHogProvider>
       </body>
     </html>
