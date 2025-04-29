@@ -12,7 +12,7 @@
 ### **Senior Software Engineer**
 
 **TMC, Luxembourg**  
-_2023 – Present_  
+_2023 - Present_  
 
 **_Bank of Luxembourg Investments (BLI)_**
 - Automate key processes, improving efficiency and accuracy.  
