@@ -11,23 +11,28 @@
 ### **Senior Software Engineer**
 
 **TMC, Luxembourg**  
-_2023 - Present_  
+_2023 – Present_  
 
-_Bank of Luxembourg Investments (BLI)_
-- Automate key processes, improving efficiency and accuracy.
-- Created querying system on top of shared file system for faster data retrieval.
-- Mine PDF files for data extraction and analysis.
-- Create an internal website with functional tools for internal use (i.e. excel formula formatter to ease readability).
+**_Bank of Luxembourg Investments (BLI)_**
+- Automate key processes, improving efficiency and accuracy.  
+- Created querying system on top of shared file system for faster data retrieval.  
+- Mined PDF files for data extraction and analysis.  
+- Built an internal website with functional tools for internal use (e.g., Excel-formula formatter to ease readability).  
 
-_Internal TMC Projects_
-- Built a web application to standardize and streamline unstructured processes (i.e. convert automatically any applicant CV into TMCs CV format).
-- Utilized GenAI to structure data and automate internal workflows.
+**_Internal TMC Projects_**
+- Built a web application to standardize and streamline unstructured processes (e.g., convert any applicant CV into TMC’s corporate format).  
+- Leveraged GenAI to structure data and automate internal workflows.  
 
-_Deloitte_
-- Engineered a Python-based library for financial portfolio calculations, optimizing decision-making processes for metrics like Duration and Solvency Capital Requirements.
-- Led the redesign of complex computational processes, improving system performance by over 80%.
-- Architected efficient data cleaning and calculation pipelines, reducing manual intervention and improving accuracy.
-- Collaborated closely with cross-functional teams.
+**_Deloitte_**
+- **Designed and implemented *Sirius*, an internal Python pipeline framework for Institutional Investor Reporting.**  
+  - Built pipeline automatic documentation generators extracting Markdown/HTML directly from code and models.  
+  - Created a declarative DSL for decision trees with utilities for high-performance data mapping and validation on top of Polars and Pydantic.  
+  - Developed a VS Code extension with code actions, live pipeline diagrams and other utils to enhance developer experience.  
+  - Integrated built-in testing utilities and CI/CD workflows to ensure reliability and catch regressions early.  
+- Engineered a Python library for financial-portfolio calculations, optimizing decision-making for metrics such as Duration and Solvency Capital Requirements.  
+- Led the redesign of complex computational processes, improving system performance and scalability.  
+- Architected end-to-end data-cleaning and calculation pipelines, reducing manual intervention and improving accuracy.  
+- Collaborated closely with actuaries, auditors, and data engineers to align technical solutions with business goals.
 
 ### **Business Intelligence & Software Engineer**
 
