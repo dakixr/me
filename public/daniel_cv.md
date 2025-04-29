@@ -5,6 +5,7 @@
 **Email:** [dakixr@gmail.com](mailto:dakixr@gmail.com)  
 **GitHub:** [github.com/dakixr](https://github.com/dakixr)  
 **LinkedIn:** [linkedin.com/daniel](https://www.linkedin.com/in/daniel-rodr%C3%ADguez-mariblanca-00a26a173/)
+**Personal Site:** [site.dakixr.dev](https://site.dakixr.dev)
 
 ## **Experience**
 
