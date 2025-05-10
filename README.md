@@ -14,11 +14,10 @@ pnpm dev
 You can run the app in a Docker container:
 
 ```bash
-docker build -t portfolio-site .
-docker run -p 8080:8080 portfolio-site
+docker build -t dakixr-site . && docker run -p 3000:3000 dakixr-site
 ```
 
-Then open [http://localhost:8080](http://localhost:8080) in your browser.
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Features
 - Project showcase
