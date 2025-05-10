@@ -3,21 +3,11 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { usePageTransition } from './PageTransition';
-import { useState, useEffect } from 'react';
+import { useTransitionNavigate } from './useTransitionNavigate';
 
 export default function CVSection() {
-  const { isTransitioning, startTransition, setTransitionType } = usePageTransition();
-  const [mounted, setMounted] = useState(false);
-  
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleCVClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setTransitionType('scale');
-    startTransition('/cv');
-  };
+  const { isTransitioning } = usePageTransition();
+  const transitionNavigate = useTransitionNavigate();
   
   // Animation variants for staggered animations
   const cardVariants = {
@@ -59,6 +49,11 @@ export default function CVSection() {
       boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
       transition: { duration: 0.1 }
     }
+  };
+
+  const handleCVClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    transitionNavigate('/cv', 'scale');
   };
 
   return (

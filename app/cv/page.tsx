@@ -6,19 +6,16 @@ import rehypeRaw from 'rehype-raw';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
 import { motion } from 'framer-motion';
-import { usePageTransition } from '../../src/components/PageTransition';
+import { useTransitionNavigate } from '../../src/components/useTransitionNavigate';
 
 export default function CVPage() {
   const [content, setContent] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const { startTransition, setTransitionType } = usePageTransition();
+  const transitionNavigate = useTransitionNavigate();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Set transition type when entering this page
-    setTransitionType('scale');
-    
     const fetchMarkdown = async () => {
       try {
         const response = await fetch('/daniel_cv.md');
@@ -30,15 +27,12 @@ export default function CVPage() {
         setIsLoading(false);
       }
     };
-
     fetchMarkdown();
-  }, [setTransitionType]);
+  }, []);
 
   const handleBackClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Use slide transition when going back to homepage
-    setTransitionType('slide');
-    startTransition('/');
+    transitionNavigate('/', 'slide');
   };
 
   if (!mounted || isLoading) {
@@ -106,42 +100,48 @@ export default function CVPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <motion.header 
-        className="bg-white dark:bg-dark p-4 shadow-md flex justify-between items-center sticky top-0 z-10"
+        className="bg-white dark:bg-dark p-4 shadow-md sticky top-0 z-10"
         variants={headerVariants}
         initial="initial"
         animate="animate"
       >
-        <h1 className="text-xl font-bold">CV</h1>
-        <div className="flex gap-4">
-          <motion.a 
-            href="/"
-            onClick={handleBackClick}
-            className="px-3 py-1 text-sm rounded-md bg-gray-100 dark:bg-dark-300 hover:bg-gray-200 dark:hover:bg-dark-400 transition-colors flex items-center"
-            variants={buttonVariants}
-            initial="initial"
-            animate="animate"
-            whileHover="hover"
-            whileTap="tap"
-          >
-            <svg className="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Portfolio
-          </motion.a>
-          <motion.a 
-            href="/api/generate-pdf"
-            className="px-3 py-1 text-sm rounded-md bg-accent text-white hover:bg-accent-dark transition-colors flex items-center"
-            variants={buttonVariants}
-            initial="initial"
-            animate="animate"
-            whileHover="hover"
-            whileTap="tap"
-          >
-            <svg className="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-            Download CV
-          </motion.a>
+        <div className="container max-w-4xl mx-auto flex items-center justify-between gap-4">
+          <div className="flex items-center">
+            <a href="/" className="flex items-center text-xl font-bold text-gray-900 dark:text-white hover:text-accent dark:hover:text-accent transition duration-300">
+              <span className="text-accent">&lt;</span>Daniel<span className="text-accent">/&gt;</span>
+            </a>
+          </div>
+          <div className="flex justify-end gap-4">
+            <motion.a 
+              href="/"
+              onClick={handleBackClick}
+              className="px-3 py-1 text-sm rounded-md bg-gray-100 dark:bg-dark-300 hover:bg-gray-200 dark:hover:bg-dark-400 transition-colors flex items-center"
+              variants={buttonVariants}
+              initial="initial"
+              animate="animate"
+              whileHover="hover"
+              whileTap="tap"
+            >
+              <svg className="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Back to Portfolio
+            </motion.a>
+            <motion.a 
+              href="/api/generate-pdf"
+              className="px-3 py-1 text-sm rounded-md bg-accent text-white hover:bg-accent-dark transition-colors flex items-center"
+              variants={buttonVariants}
+              initial="initial"
+              animate="animate"
+              whileHover="hover"
+              whileTap="tap"
+            >
+              <svg className="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download CV
+            </motion.a>
+          </div>
         </div>
       </motion.header>
       
