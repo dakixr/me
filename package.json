@@ -12,6 +12,7 @@
   "dependencies": {
     "@codemirror/lang-markdown": "^6.3.2",
     "@codemirror/theme-one-dark": "^6.1.2",
+    "@codemirror/view": "^6.36.7",
     "@uiw/react-codemirror": "^4.23.12",
     "file-saver": "^2.0.5",
     "framer-motion": "^11.0.3",
