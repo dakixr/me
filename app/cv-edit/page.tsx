@@ -7,7 +7,6 @@ import rehypeRaw from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import { saveAs } from "file-saver";
-import { motion } from "framer-motion";
 
 const CodeMirror = dynamic(() => import("@uiw/react-codemirror"), { ssr: false });
 import { markdown } from "@codemirror/lang-markdown";
@@ -68,25 +67,25 @@ export default function CVEditPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
-      <header className="flex justify-between items-center p-4 border-b border-gray-700">
+    <div className="min-h-screen bg-gradient-to-br from-[#181c20] to-[#23272f] text-white flex flex-col font-sans">
+      <header className="sticky top-0 z-20 flex justify-between items-center px-6 py-4 bg-black/80 backdrop-blur border-b border-gray-800 shadow-sm">
         <button
-          className="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 border border-gray-600"
+          className="rounded-lg px-4 py-2 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 border border-gray-700 shadow transition-colors focus:outline-none focus:ring-2 focus:ring-accent/50"
           onClick={handleReload}
           disabled={isLoading}
         >
           Reload original
         </button>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <button
-            className="bg-accent px-4 py-2 rounded hover:bg-accent-dark border border-accent"
+            className="rounded-lg px-4 py-2 font-medium bg-accent text-white hover:bg-accent-dark active:bg-accent/80 border border-accent shadow transition-colors focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-60"
             onClick={handleExportPDF}
             disabled={pdfLoading}
           >
             {pdfLoading ? "Exporting..." : "Export to PDF"}
           </button>
           <button
-            className="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 border border-gray-600"
+            className="rounded-lg px-4 py-2 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 border border-gray-700 shadow transition-colors focus:outline-none focus:ring-2 focus:ring-accent/50"
             onClick={handleExportMD}
           >
             Download .md
@@ -95,38 +94,47 @@ export default function CVEditPage() {
       </header>
       <main className="flex flex-1 min-h-0">
         {/* Editor */}
-        <section className="w-1/2 p-4 flex flex-col border-r border-gray-700 min-h-0">
-          <h2 className="mb-2 font-bold">Markdown file</h2>
-          <div className="flex-1 min-h-0">
-            {typeof window !== "undefined" && CodeMirror ? (
-              <CodeMirror
-                value={content}
-                height="calc(100vh - 120px)"
-                theme={oneDark}
-                extensions={[markdown()]}
-                onChange={setContent}
-                basicSetup={{ lineNumbers: true }}
-                ref={editorRef}
-              />
-            ) : (
-              <textarea
-                className="w-full h-full bg-black text-white border border-gray-700 rounded p-2"
-                value={content}
-                onChange={e => setContent(e.target.value)}
-              />
-            )}
+        <section className="w-1/2 flex flex-col min-h-0 border-r border-gray-800 bg-[#20242c]">
+          <div className="flex-1 min-h-0 px-6 pb-6">
+            <div className="h-full rounded-lg overflow-hidden border border-gray-800 shadow-inner bg-[#23272f]">
+              {typeof window !== "undefined" && CodeMirror ? (
+                <CodeMirror
+                  value={content}
+                  height="100%"
+                  theme={oneDark}
+                  extensions={[markdown()]}
+                  onChange={setContent}
+                  basicSetup={{ lineNumbers: true }}
+                  ref={editorRef}
+                  style={{ minHeight: '100%', height: '100%', fontSize: 16, background: 'transparent', overflow: 'auto', whiteSpace: 'pre-wrap' }}
+                  // @ts-ignore
+                  lineWrapping={true}
+                />
+              ) : (
+                <textarea
+                  className="w-full h-full bg-transparent text-white border-none rounded p-2 resize-none"
+                  value={content}
+                  onChange={e => setContent(e.target.value)}
+                  style={{ minHeight: '100%', height: '100%', fontSize: 16, background: 'transparent', overflow: 'auto', whiteSpace: 'pre-wrap' }}
+                  wrap="soft"
+                />
+              )}
+            </div>
           </div>
         </section>
+        {/* Divider */}
+        <div className="w-0.5 bg-gradient-to-b from-transparent via-gray-800 to-transparent" />
         {/* Live Preview */}
-        <section className="w-1/2 p-4 flex flex-col min-h-0">
-          <h2 className="mb-2 font-bold text-center">LIVE PREVIEW</h2>
-          <div className="flex-1 overflow-auto bg-gray-900 rounded p-4 prose prose-invert max-w-none">
-            <ReactMarkdown
-              rehypePlugins={[rehypeRaw, rehypeHighlight]}
-              remarkPlugins={[remarkGfm]}
-            >
-              {content}
-            </ReactMarkdown>
+        <section className="w-1/2 flex flex-col min-h-0 bg-[#20242c]">
+          <div className="flex-1 min-h-0 px-6 pb-6 flex flex-col">
+            <div className="flex-1 overflow-auto rounded-lg border border-gray-800 shadow-lg bg-[#23272f] p-6 prose prose-invert max-w-none scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900">
+              <ReactMarkdown
+                rehypePlugins={[rehypeRaw, rehypeHighlight]}
+                remarkPlugins={[remarkGfm]}
+              >
+                {content}
+              </ReactMarkdown>
+            </div>
           </div>
         </section>
       </main>
