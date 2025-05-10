@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -16,11 +16,11 @@ import { oneDark } from "@codemirror/theme-one-dark";
 const codeMirrorExtensions = [markdown(), EditorView.lineWrapping];
 
 export default function CVEditPage() {
-  const [content, setContent] = useState("");
   const [original, setOriginal] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [pdfLoading, setPdfLoading] = useState(false);
-  const editorRef = useRef(null);
+  const [previewContent, setPreviewContent] = useState("");
+  const editorViewRef = useRef<EditorView | null>(null);
 
   // Load markdown file
   useEffect(() => {
@@ -29,10 +29,11 @@ export default function CVEditPage() {
       try {
         const response = await fetch("/daniel_cv.md");
         const text = await response.text();
-        setContent(text);
         setOriginal(text);
+        setPreviewContent(text);
       } catch (error) {
-        setContent("Error loading markdown");
+        setOriginal("Error loading markdown");
+        setPreviewContent("Error loading markdown");
       } finally {
         setIsLoading(false);
       }
@@ -41,17 +42,25 @@ export default function CVEditPage() {
   }, []);
 
   // Reload original content
-  const handleReload = () => setContent(original);
+  const handleReload = () => {
+    const view = editorViewRef.current;
+    if (view) {
+      view.dispatch({
+        changes: { from: 0, to: view.state.doc.length, insert: original },
+        selection: { anchor: 0 }
+      });
+      setPreviewContent(original);
+    }
+  };
 
   // Download as PDF (calls API route)
   const handleExportPDF = async () => {
     setPdfLoading(true);
     try {
-      // Send current markdown to API for PDF generation
       const res = await fetch("/api/generate-pdf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ markdown: content }),
+        body: JSON.stringify({ markdown: editorViewRef.current?.state.doc.toString() || '' }),
       });
       if (!res.ok) throw new Error("Failed to generate PDF");
       const blob = await res.blob();
@@ -65,7 +74,7 @@ export default function CVEditPage() {
 
   // Download as Markdown
   const handleExportMD = () => {
-    const blob = new Blob([content], { type: "text/markdown" });
+    const blob = new Blob([editorViewRef.current?.state.doc.toString() || ''], { type: "text/markdown" });
     saveAs(blob, "daniel_cv.md");
   };
 
@@ -103,26 +112,16 @@ export default function CVEditPage() {
         <section className="w-1/2 flex flex-col min-h-0 border-r border-gray-800 bg-[#20242c]">
           <div className="flex-1 min-h-0 px-6 pb-6 pt-6">
             <div className="h-full rounded-lg overflow-hidden border border-gray-800 shadow-inner bg-[#23272f]">
-              {typeof window !== "undefined" && CodeMirror ? (
+              {!isLoading && (
                 <CodeMirror
-                  value={content}
+                  defaultValue={original}
                   height="100%"
                   theme={oneDark}
                   extensions={codeMirrorExtensions}
-                  onChange={(value, viewUpdate) => {
-                    if (value !== content) setContent(value);
-                  }}
+                  onCreateEditor={(view) => { editorViewRef.current = view; }}
+                  onChange={(value) => setPreviewContent(value)}
                   basicSetup={{ lineNumbers: true }}
-                  ref={editorRef}
                   style={{ minHeight: '100%', height: '100%', fontSize: 16, background: 'transparent', overflow: 'auto' }}
-                />
-              ) : (
-                <textarea
-                  className="w-full h-full bg-transparent text-white border-none rounded p-2 resize-none"
-                  value={content}
-                  onChange={e => setContent(e.target.value)}
-                  style={{ minHeight: '100%', height: '100%', fontSize: 16, background: 'transparent', overflow: 'auto', whiteSpace: 'pre-wrap' }}
-                  wrap="soft"
                 />
               )}
             </div>
@@ -138,7 +137,7 @@ export default function CVEditPage() {
                 rehypePlugins={[rehypeRaw, rehypeHighlight]}
                 remarkPlugins={[remarkGfm]}
               >
-                {content}
+                {previewContent}
               </ReactMarkdown>
             </div>
           </div>
