@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -8,49 +8,59 @@ import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import { saveAs } from "file-saver";
 import { EditorView } from '@codemirror/view';
-
-const CodeMirror = dynamic(() => import("@uiw/react-codemirror"), { ssr: false });
 import { markdown } from "@codemirror/lang-markdown";
 import { oneDark } from "@codemirror/theme-one-dark";
 
+const CodeMirror = dynamic(() => import("@uiw/react-codemirror"), { ssr: false });
 const codeMirrorExtensions = [markdown(), EditorView.lineWrapping];
 
 export default function CVEditPage() {
   const [original, setOriginal] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [pdfLoading, setPdfLoading] = useState(false);
   const [previewContent, setPreviewContent] = useState("");
+  const [pendingContent, setPendingContent] = useState<string | null>(null);
   const editorViewRef = useRef<EditorView | null>(null);
 
-  // Load markdown file
-  useEffect(() => {
-    const fetchMarkdown = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch("/daniel_cv.md");
-        const text = await response.text();
-        setOriginal(text);
-        setPreviewContent(text);
-      } catch (error) {
-        setOriginal("Error loading markdown");
-        setPreviewContent("Error loading markdown");
-      } finally {
-        setIsLoading(false);
+  // Load markdown file on demand
+  const handleLoadCV = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch("/daniel_cv.md");
+      const text = await response.text();
+      setOriginal(text);
+      setPreviewContent(text);
+
+      // Always set pendingContent, so onCreateEditor can pick it up if needed
+      setPendingContent(text);
+
+      // If editor is already mounted, dispatch content
+      if (editorViewRef.current) {
+        editorViewRef.current.dispatch({
+          changes: { from: 0, to: editorViewRef.current.state.doc.length, insert: text },
+          selection: { anchor: 0 }
+        });
+        setPendingContent(null); // Clear pendingContent since we just injected it
       }
-    };
-    fetchMarkdown();
-  }, []);
+    } catch (error) {
+      setOriginal("Error loading markdown");
+      setPreviewContent("Error loading markdown");
+      setPendingContent("Error loading markdown");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   // Reload original content
   const handleReload = () => {
-    const view = editorViewRef.current;
+    const view = (window as any)._cvEditorView;
     if (view) {
       view.dispatch({
         changes: { from: 0, to: view.state.doc.length, insert: original },
         selection: { anchor: 0 }
       });
-      setPreviewContent(original);
     }
+    setPreviewContent(original);
   };
 
   // Download as PDF (calls API route)
@@ -60,7 +70,7 @@ export default function CVEditPage() {
       const res = await fetch("/api/generate-pdf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ markdown: editorViewRef.current?.state.doc.toString() || '' }),
+        body: JSON.stringify({ markdown: previewContent }),
       });
       if (!res.ok) throw new Error("Failed to generate PDF");
       const blob = await res.blob();
@@ -74,7 +84,7 @@ export default function CVEditPage() {
 
   // Download as Markdown
   const handleExportMD = () => {
-    const blob = new Blob([editorViewRef.current?.state.doc.toString() || ''], { type: "text/markdown" });
+    const blob = new Blob([previewContent], { type: "text/markdown" });
     saveAs(blob, "daniel_cv.md");
   };
 
@@ -85,10 +95,10 @@ export default function CVEditPage() {
         <div>
           <button
             className="rounded-lg px-4 py-2 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 border border-gray-700 shadow transition-colors focus:outline-none focus:ring-2 focus:ring-accent/50"
-            onClick={handleReload}
+            onClick={handleLoadCV}
             disabled={isLoading}
           >
-            Reload original
+            Load CV
           </button>
         </div>
         <div className="flex gap-3">
@@ -112,18 +122,26 @@ export default function CVEditPage() {
         <section className="w-1/2 flex flex-col min-h-0 border-r border-gray-800 bg-[#20242c]">
           <div className="flex-1 min-h-0 px-6 pb-6 pt-6">
             <div className="h-full rounded-lg overflow-hidden border border-gray-800 shadow-inner bg-[#23272f]">
-              {!isLoading && (
-                <CodeMirror
-                  defaultValue={original}
-                  height="100%"
-                  theme={oneDark}
-                  extensions={codeMirrorExtensions}
-                  onCreateEditor={(view) => { editorViewRef.current = view; }}
-                  onChange={(value) => setPreviewContent(value)}
-                  basicSetup={{ lineNumbers: true }}
-                  style={{ minHeight: '100%', height: '100%', fontSize: 16, background: 'transparent', overflow: 'auto' }}
-                />
-              )}
+              <CodeMirror
+                onCreateEditor={view => {
+                  editorViewRef.current = view;
+                  // Always inject pendingContent if set
+                  if (pendingContent !== null) {
+                    view.dispatch({
+                      changes: { from: 0, to: view.state.doc.length, insert: pendingContent },
+                      selection: { anchor: 0 }
+                    });
+                    setPendingContent(null);
+                    setPreviewContent(pendingContent);
+                  }
+                }}
+                onChange={value => setPreviewContent(value)}
+                height="100%"
+                theme={oneDark}
+                extensions={codeMirrorExtensions}
+                basicSetup={{ lineNumbers: true }}
+                style={{ minHeight: '100%', height: '100%', fontSize: 16, background: 'transparent', overflow: 'auto' }}
+              />
             </div>
           </div>
         </section>
