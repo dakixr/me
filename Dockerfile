@@ -1,44 +1,62 @@
-FROM node:18-slim
+# syntax=docker/dockerfile:1.4
 
-# Install dependencies for Puppeteer
-RUN apt-get update \
-    && apt-get install -y wget gnupg curl \
-    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
-    && apt-get update \
-    && apt-get install -y google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 \
-      --no-install-recommends \
-    && rm -rf /var/lib/apt/lists/*
+###########
+# Builder #
+###########
+FROM node:18-alpine AS builder
 
-# Create app directory
+# Install Chromium & fonts
+RUN apk add --no-cache \
+      chromium \
+      nss \
+      freetype \
+      harfbuzz \
+      ca-certificates \
+      ttf-freefont
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
+# Enable pnpm via Corepack
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
 WORKDIR /app
-
-# Set environment variable to skip Puppeteer's Chromium download
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
-
-# Install pnpm
-RUN npm install -g pnpm
-
-# Copy package files
 COPY package.json pnpm-lock.yaml ./
-
-# Create .npmrc to enable running scripts
-RUN echo "enable-pre-post-scripts=true" > .npmrc \
-    && echo "node-linker=hoisted" >> .npmrc \
-    && echo "ignore-pnpmrc=true" >> .npmrc
-
-# Install dependencies
 RUN pnpm install --frozen-lockfile
 
-# Copy source code
 COPY . .
-
-# Build the application
 RUN pnpm build
 
-# Expose the port the app runs on
-EXPOSE 8080
+############
+# Runner   #
+############
+FROM node:18-alpine
 
-# Start the application
+# Install Chromium runtime only
+RUN apk add --no-cache \
+      chromium \
+      nss \
+      freetype \
+      harfbuzz \
+      ca-certificates \
+      ttf-freefont
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser \
+    NODE_ENV=production
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile --prod
+
+# Pull in the build output
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+
+# Drop to non-root
+USER node
+
+EXPOSE 3000
 CMD ["pnpm", "start"] 

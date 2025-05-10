@@ -154,6 +154,7 @@ export default function CVEditPage() {
               <ReactMarkdown
                 rehypePlugins={[rehypeRaw, rehypeHighlight]}
                 remarkPlugins={[remarkGfm]}
+                components={{}}
               >
                 {previewContent}
               </ReactMarkdown>
