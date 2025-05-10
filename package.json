@@ -10,6 +10,10 @@
     "postinstall": "npx puppeteer browsers install chrome"
   },
   "dependencies": {
+    "@codemirror/lang-markdown": "^6.3.2",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@uiw/react-codemirror": "^4.23.12",
+    "file-saver": "^2.0.5",
     "framer-motion": "^11.0.3",
     "next": "14.1.0",
     "next-themes": "^0.2.1",
@@ -17,6 +21,7 @@
     "posthog-node": "^4.10.1",
     "puppeteer": "^24.4.0",
     "react": "^18.2.0",
+    "react-codemirror6": "^1.1.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^9.0.1",
     "rehype-highlight": "^7.0.0",
@@ -28,6 +33,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^2.1.4",
     "@tailwindcss/typography": "^0.5.10",
+    "@types/file-saver": "^2.0.7",
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.52",
     "@types/react-dom": "^18.2.18",
