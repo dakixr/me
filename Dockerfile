@@ -1,9 +1,6 @@
 # ---- Builder ----
 FROM node:23-slim AS builder
 
-# Install curl
-RUN apt-get update && apt-get install -y curl
-
 # Enable pnpm via Corepack
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
@@ -23,7 +20,10 @@ COPY . .
 RUN pnpm build
 
 # ---- Runner ----
-FROM node:23-slim AS runner
+  FROM node:23-slim AS runner
+  
+# Install curl
+RUN apt-get update && apt-get install -y curl
 
 # Enable pnpm via Corepack (for running, not building)
 RUN corepack enable && corepack prepare pnpm@latest --activate
