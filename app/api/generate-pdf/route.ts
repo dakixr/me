@@ -74,9 +74,6 @@ async function generatePdfFromMarkdown(markdown: string): Promise<Uint8Array> {
       '--single-process',
       '--disable-gpu'
     ],
-    executablePath: process.env.NODE_ENV === 'production' 
-      ? '/usr/bin/google-chrome-stable' 
-      : undefined
   });
   const page = await browser.newPage();
   await page.setContent(completeHtml, { waitUntil: 'networkidle0' });

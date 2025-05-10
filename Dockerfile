@@ -20,10 +20,14 @@ COPY . .
 RUN pnpm build
 
 # ---- Runner ----
-  FROM node:23-slim AS runner
-  
-# Install curl
-RUN apt-get update && apt-get install -y curl
+FROM node:23-slim AS runner
+
+# Install curl and Chromium for Puppeteer
+RUN apt-get update && \
+    apt-get install -y curl chromium && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 # Enable pnpm via Corepack (for running, not building)
 RUN corepack enable && corepack prepare pnpm@latest --activate
