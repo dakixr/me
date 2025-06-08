@@ -102,5 +102,5 @@ Completed full program in 4 years (vs. standard 5)
 
 ## Other Experience
 
-**IT Teacher — Fundación Alas, Spain** (2017–2019)
+**IT Teacher — Fundación Alas, Spain** (2017–2019)  
 Trained 15+ elderly/disabled adults in IT fundamentals, adapting to individual learning needs.
