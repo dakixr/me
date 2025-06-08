@@ -13,7 +13,7 @@ Luxembourg, Luxembourg
 
 ### Senior Software Engineer — TMC, Luxembourg
 
-2023–Present
+2023-Present
 
 #### Deloitte (second mission)
 
@@ -30,7 +30,7 @@ Luxembourg, Luxembourg
 
 #### Internal TMC Projects
 
-- Built a web app to convert unstructured CVs into TMC’s standard format, reducing onboarding time for new clients by >10x.
+- Built a web app to convert unstructured CVs into TMC's standard format, reducing onboarding time for new clients by >10x.
 - Developed GenAI-driven meeting note system, saving 15 minutes per meeting for all team members.
 
 #### Deloitte (first mission)
@@ -71,12 +71,12 @@ Luxembourg, Luxembourg
 ## Education
 
 **Computer Engineering**  
-Universidad Politécnica de Madrid, 2017–2022  
+Universidad Politécnica de Madrid
 Erasmus+, Aalto University (Finland)  
 Key focus: Algorithms, Operating Systems, Declarative Programming  
 
 **Business Administration and Management**  
-Universidad Politécnica de Madrid, 2017–2022  
+Universidad Politécnica de Madrid
 Completed full program in 4 years (vs. standard 5)  
 
 ---
@@ -102,5 +102,5 @@ Completed full program in 4 years (vs. standard 5)
 
 ## Other Experience
 
-**IT Teacher — Fundación Alas, Spain** (2017–2019)  
+**IT Teacher — Fundación Alas, Spain** (2017-2019)  
 Trained 15+ elderly/disabled adults in IT fundamentals, adapting to individual learning needs.
