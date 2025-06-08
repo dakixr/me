@@ -17,13 +17,13 @@ Luxembourg, Luxembourg
 
 #### Deloitte (second mission)
 
-- Delivered Sirius, a Python pipeline used for institutional investor reporting by Deloitte’s top 10 clients, slashing documentation effort 15%+ via automated introspective docs.
+- Developed Sirius, a Python framework for pipeline-based data manipulation leveraging metaprogramming, enabling rapid creation of custom data flows for Deloitte’s top 10 institutional clients and reducing documentation workload by 15%+ through automated introspective documentation.
 - Built a declarative DSL for decision trees, empowering non-engineers to update client logic and cutting response times 350%.
-- Shipped a VS Code extension with live diagrams/code actions, lowering onboarding friction for non-technical users; fully adopted within weeks by 7-person team.
+- Shipped a VS Code extension with live diagrams/code actions, lowering onboarding friction for non-technical users.
 
 #### Bank of Luxembourg Investments (BLI)
 
-- Automated manual, error-prone processes, saving 100+ hours per quarter and cutting human error rate by 99%.
+- Automated manual, error-prone processes, saving 100+ hours per quarter and cutting human error rate by 95%.
 - Developed a file-based querying system, boosting internal data retrieval speed.
 - Built PDF mining and analysis tools, enabling faster data extraction and insights for investment ops.
 - Created internal web tools (e.g., Excel formula formatter) to speed up daily workflows.
@@ -45,7 +45,7 @@ Luxembourg, Luxembourg
 
 2022
 
-- Launched Amazon’s first ML forecasting solution for a $60M+ operational plan, moving from zero forecasting to automated, data-driven decision-making.
+- Launched the first ML forecasting solution for my team's $60M+ operational plan at Amazon, moving from zero forecasting to automated, data-driven decision-making.
 - Built new KPI tracking/warehousing tools, improving reporting speed and reliability for multiple teams.
 - Spearheaded engineering initiatives that increased velocity and data quality.
 
