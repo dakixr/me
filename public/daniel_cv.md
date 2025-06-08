@@ -1,11 +1,11 @@
 # Daniel Rodríguez Mariblanca
 
-Luxembourg, Luxembourg
-+34 610 655 215
-[dakixr@gmail.com](mailto:dakixr@gmail.com)
-[github.com/dakixr](https://github.com/dakixr)
-[site.dakixr.dev](https://site.dakixr.dev)
-[linkedin.com/daniel](https://www.linkedin.com/in/daniel-rodr%C3%ADguez-mariblanca-00a26a173/)
+Luxembourg, Luxembourg  
++34 610 655 215  
+[dakixr@gmail.com](mailto:dakixr@gmail.com)  
+[github.com/dakixr](https://github.com/dakixr)  
+[site.dakixr.dev](https://site.dakixr.dev)  
+[linkedin.com/daniel](https://www.linkedin.com/in/daniel-rodr%C3%ADguez-mariblanca-00a26a173/)  
 
 ---
 
