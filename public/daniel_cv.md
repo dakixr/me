@@ -70,12 +70,12 @@ Luxembourg, Luxembourg
 
 ## Education
 
-**Computer Engineering**
+**Computer Engineering**  
 Universidad Politécnica de Madrid, 2017–2022  
 Erasmus+, Aalto University (Finland)  
 Key focus: Algorithms, Operating Systems, Declarative Programming  
 
-**Business Administration and Management**
+**Business Administration and Management**  
 Universidad Politécnica de Madrid, 2017–2022  
 Completed full program in 4 years (vs. standard 5)  
 
