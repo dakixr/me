@@ -17,7 +17,7 @@ Luxembourg, Luxembourg
 
 #### Deloitte (second mission)
 
-- Developed Sirius, a Python framework for pipeline-based data manipulation leveraging metaprogramming, enabling rapid creation of custom data flows for Deloitte’s top 10 institutional clients and reducing documentation workload by 15%+ through automated introspective documentation.
+- Developed Sirius, a Python framework for pipeline-based data manipulation leveraging metaprogramming, enabling rapid creation of custom data flows for Deloitte's top 10 institutional clients and reducing documentation workload by 15%+ through automated introspective documentation.
 - Built a declarative DSL for decision trees, empowering non-engineers to update client logic and cutting response times 350%.
 - Shipped a VS Code extension with live diagrams/code actions, lowering onboarding friction for non-technical users.
 
