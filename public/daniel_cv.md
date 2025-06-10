@@ -18,25 +18,27 @@ Luxembourg, Luxembourg
 #### Deloitte (second mission)
 
 - Developed Sirius, a Python framework for pipeline-based data manipulation leveraging metaprogramming, enabling rapid creation of custom data flows for Deloitte's top 10 institutional clients and reducing documentation workload by 15%+ through automated introspective documentation.
-- Built a declarative DSL for decision trees, empowering non-engineers to update client logic and cutting response times 350%.
-- Shipped a VS Code extension with live diagrams/code actions, lowering onboarding friction for non-technical users.
+- Built a declarative DSL for decision trees, empowering non-engineers to update client logic and significantly accelerating iteration times.
+- Delivered a VS Code extension featuring live diagrams, code actions, and an integrated suite of CLI tools with an intuitive user interface, significantly reducing onboarding barriers for non-technical users.
+- Established a robust testing strategy, implementing comprehensive unit tests and snapshot testing to ensure code reliability and prevent regressions across framework updates.
 
 #### Bank of Luxembourg Investments (BLI)
 
 - Automated manual, error-prone processes, saving 100+ hours per quarter and cutting human error rate by 95%.
-- Developed a file-based querying system, boosting internal data retrieval speed.
-- Built PDF mining and analysis tools, enabling faster data extraction and insights for investment ops.
-- Created internal web tools (e.g., Excel formula formatter) to speed up daily workflows.
+- Developed a file-based querying system with indexing and cache, boosting internal data retrieval speed, enabling real time replies to client inquiries.
+- Built PDF mining and analysis tools, facilitating compliance with regulatory requirements.
+- Created a suite of internal web tools (e.g., Excel formula formatter) to speed up daily workflows.
 
 #### Internal TMC Projects
 
-- Built a web app to convert unstructured CVs into TMC's standard format, reducing onboarding time for new clients by >10x.
+- Built a web app to convert unstructured CVs into TMC's standardized format, reducing onboarding time for new clients by >6x.
 - Developed GenAI-driven meeting note system, saving 15 minutes per meeting for all team members.
 
 #### Deloitte (first mission)
 
-- Engineered Stelar, a Python library for portfolio analytics, used in production for Deloitte clients; improved computational performance by 500%.
-- Redesigned critical financial processes, increasing system scalability and maintainability across all production deployments.
+- Engineered Stelar, a Python library to enrich investment portfolios with Duration and SCR (Solvency Capital Requirements), improving previous performance by 500%.
+- Made significant contributions to a shared commons tools repository, enabling code reusability and accelerating development across all Deloitte engineering teams.
+- Implemented a Python ETL toolkit that enables intuitive, configuration-driven data mapping between sources and destinations, supporting both YAML and Excel-based workflows to streamline and simplify data transformation processes.
 - Integrated robust CI/CD and built-in test suites, preventing regressions and raising software quality.
 
 ---
