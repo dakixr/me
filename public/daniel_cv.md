@@ -17,7 +17,7 @@ Luxembourg, Luxembourg
 
 #### Deloitte (second mission)
 
-- Developed Sirius, a Python framework for pipeline-based data manipulation leveraging metaprogramming, enabling rapid creation of custom data flows for Deloitte's top 10 institutional clients and reducing documentation workload by 15%+ through automated introspective documentation.
+- Developed Sirius - DAG Pipelines, a Python framework for data transformation leveraging metaprogramming, enabling rapid creation of custom data flows for Deloitte's top 10 institutional clients and reducing documentation workload through automated introspective documentation.
 - Built a declarative DSL for decision trees, empowering non-engineers to update client logic and significantly accelerating iteration times.
 - Delivered a VS Code extension featuring live diagrams, code actions, and an integrated suite of CLI tools with an intuitive user interface, significantly reducing onboarding barriers for non-technical users.
 - Established a robust testing strategy, implementing comprehensive unit tests and snapshot testing to ensure code reliability and prevent regressions across framework updates.
@@ -38,7 +38,7 @@ Luxembourg, Luxembourg
 
 - Engineered Stelar, a Python library to enrich investment portfolios with Duration and SCR (Solvency Capital Requirements), improving previous performance by 500%.
 - Made significant contributions to a shared commons tools repository, enabling code reusability and accelerating development across all Deloitte engineering teams.
-- Implemented a Python ETL toolkit that enables intuitive, configuration-driven data mapping between sources and destinations, supporting both YAML and Excel-based workflows to streamline and simplify data transformation processes.
+- Implemented a Python ETL toolkit that enables intuitive, configuration-driven data mapping between sources and destinations, supporting both YAML and Excel-based specs to streamline and simplify data transformation processes.
 - Integrated robust CI/CD and built-in test suites, preventing regressions and raising software quality.
 
 ---
