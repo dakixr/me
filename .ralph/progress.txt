@@ -51,3 +51,22 @@
 [2026-01-28T22:12:39.860629+00:00] Item FEAT-002 completed successfully
 [2026-01-28T22:12:40.017764+00:00] Starting item FEAT-003 (attempt 1): Create animated skill visualization with dynamic progress
 [2026-01-28T22:14:50.945419+00:00] Item FEAT-003 completed successfully
+[2026-01-28T22:14:51.119167+00:00] Starting item FEAT-004 (attempt 1): Add interactive timeline for experience section
+[2026-01-28T22:45:00.000000+00:00] Created Timeline.tsx component with:
+  - Animated numbered nodes that scale in on scroll
+  - Connecting timeline line that draws progressively using useScroll and useTransform
+  - Expandable job details with smooth height transitions
+  - Company information, location, and period display
+  - Mission-specific descriptions with bullet points
+  - Tech stack badges for each mission
+  - Responsive layout: vertical timeline on mobile (<768px), horizontal scrollable on desktop
+  - Click interaction to expand/collapse detailed information
+  - Hover effects on nodes and cards
+  - All 3 experience entries from CV (TMC, Amazon, Vector ITC/Santander)
+  - All missions per company included with full details
+- Updated CVSection.tsx to integrate Timeline component
+  - Replaced simple card with full interactive timeline
+  - Kept download/view CV buttons at bottom
+  - Maintained consistent styling and animations
+- Both pnpm build and pnpm lint pass successfully
+[2026-01-28T22:19:22.188612+00:00] Item FEAT-004 completed successfully
