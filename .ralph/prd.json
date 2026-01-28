@@ -72,10 +72,10 @@
       ],
       "verify": null,
       "status": {
-        "state": "todo",
-        "attempts": 0,
+        "state": "done",
+        "attempts": 1,
         "last_error": null,
-        "done_at": null
+        "done_at": "2026-01-28 22:14:50.944164+00:00"
       }
     },
     {
