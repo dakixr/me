@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import ScrollProgress from './ScrollProgress';
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
@@ -23,6 +24,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-20 backdrop-blur-md bg-white/70 dark:bg-dark-100/70 border-b border-gray-200 dark:border-dark-300">
+      <ScrollProgress />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">

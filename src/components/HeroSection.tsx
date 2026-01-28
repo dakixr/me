@@ -6,7 +6,7 @@ import ThreeScene from "./ThreeScene";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden min-h-screen flex items-center py-12 md:py-24 bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-dark dark:via-dark-100 dark:to-dark-200">
+    <section id="about" className="relative overflow-hidden min-h-screen flex items-center py-12 md:py-24 bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-dark dark:via-dark-100 dark:to-dark-200">
       <ThreeScene />
 
       {/* Content */}
