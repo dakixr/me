@@ -125,4 +125,171 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Base Button Styles */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.4);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #0ea5e9;
+  border: 2px solid #0ea5e9;
+}
+
+.btn-outline:hover {
+  background: #0ea5e9;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-outline:active {
+  transform: translateY(0);
+}
+
+.dark .btn-primary {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.5);
+}
+
+.dark .btn-primary:hover {
+  box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.6);
+}
+
+.dark .btn-outline {
+  color: #0ea5e9;
+  border-color: #0ea5e9;
+}
+
+.dark .btn-outline:hover {
+  background: #0ea5e9;
+  color: white;
+}
+
+/* Magnetic Button Enhancement */
+.magnetic-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.magnetic-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.magnetic-btn:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Pulse Animation for Call-to-Action Buttons */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(14, 165, 233, 0);
+  }
+}
+
+.btn-pulse {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Icon Button Styles */
+.icon-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  transform: scale(1.1);
+  background: rgba(14, 165, 233, 0.1);
+}
+
+.icon-btn:active {
+  transform: scale(0.95);
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn-primary,
+  .btn-outline,
+  .icon-btn,
+  .magnetic-btn {
+    transition: none;
+    transform: none;
+  }
+  
+  .btn-pulse {
+    animation: none;
+  }
+  
+  .magnetic-btn::before {
+    display: none;
+  }
+}
+
+/* Accessible Focus States */
+.btn:focus-visible,
+.icon-btn:focus-visible,
+.magnetic-btn:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
+
+.dark .btn:focus-visible,
+.dark .icon-btn:focus-visible,
+.dark .magnetic-btn:focus-visible {
+  outline-color: #0ea5e9;
 } 

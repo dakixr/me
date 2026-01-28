@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import ThreeScene from "./ThreeScene";
+import MagneticButton from "./MagneticButton";
 
 export default function HeroSection() {
   return (
@@ -54,11 +55,11 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4"
               suppressHydrationWarning
             >
-              <Link href="#projects" className="btn btn-primary">
-                View Projects
+              <Link href="#projects" className="inline-block">
+                <MagneticButton variant="primary">View Projects</MagneticButton>
               </Link>
-              <Link href="#contact" className="btn btn-outline">
-                Contact Me
+              <Link href="#contact" className="inline-block">
+                <MagneticButton variant="outline">Contact Me</MagneticButton>
               </Link>
             </motion.div>
           </motion.div>
