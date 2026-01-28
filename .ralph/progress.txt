@@ -47,3 +47,5 @@
   - Fixed ESLint no-unused-vars errors in ThreeScene, CVSection, Footer, ProjectsSection, PageTransition, API routes
 - Both pnpm build and pnpm lint pass successfully
 [2026-01-28T22:10:08.902820+00:00] Item FEAT-001 completed successfully
+[2026-01-28T22:10:09.079133+00:00] Starting item FEAT-002 (attempt 1): Add interactive project showcase with 3D card effects
+[2026-01-28T22:12:39.860629+00:00] Item FEAT-002 completed successfully

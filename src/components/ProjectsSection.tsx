@@ -1,6 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import ProjectCard from './ProjectCard';
 
 type Project = {
   title: string;
@@ -11,6 +13,8 @@ type Project = {
 };
 
 export default function ProjectsSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const projects: Project[] = [
     {
       title: 'CostCompiler',
@@ -56,21 +60,17 @@ export default function ProjectsSection() {
     },
   ];
 
-  // Animation variants
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
+  function scrollLeft() {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({ left: -400, behavior: 'smooth' });
     }
-  };
-  
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    show: { y: 0, opacity: 1 }
-  };
+  }
+
+  function scrollRight() {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+    }
+  }
 
   return (
     <section id="projects" className="py-20 bg-white dark:bg-dark">
@@ -103,52 +103,49 @@ export default function ProjectsSection() {
           </motion.p>
         </div>
         
-        <motion.div 
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-10"
-        >
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              variants={item}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="bg-gray-50 dark:bg-dark-100 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <div className="h-48 bg-gray-300 dark:bg-dark-300 flex items-center justify-center">
-                <div className="text-4xl font-bold text-accent">{project.title}</div>
+        <div className="relative">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={scrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white dark:bg-dark-100 shadow-lg hidden md:block"
+            aria-label="Scroll projects left"
+          >
+            <svg className="w-6 h-6 text-gray-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </motion.button>
+          
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={scrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white dark:bg-dark-100 shadow-lg hidden md:block"
+            aria-label="Scroll projects right"
+          >
+            <svg className="w-6 h-6 text-gray-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </motion.button>
+
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {projects.map((project, index) => (
+              <ProjectCard key={index} project={project} index={index} />
+            ))}
+          </div>
+
+          <div 
+            ref={containerRef}
+            className="md:hidden overflow-x-auto snap-x snap-mandatory flex gap-6 pb-8 -mx-4 px-4 scrollbar-hide"
+          >
+            {projects.map((project, index) => (
+              <div key={index} className="snap-center shrink-0 w-[85vw] max-w-sm">
+                <ProjectCard project={project} index={index} />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span 
-                      key={techIndex} 
-                      className="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-dark-300 text-gray-800 dark:text-gray-200 rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <a 
-                  href={project.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center text-accent hover:text-accent-dark transition-colors duration-300"
-                >
-                  Visit Project
-                  <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-                  </svg>
-                </a>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
-} 
+}
