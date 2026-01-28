@@ -15,7 +15,6 @@ const CodeMirror = dynamic(() => import("@uiw/react-codemirror"), { ssr: false }
 const codeMirrorExtensions = [markdown(), EditorView.lineWrapping];
 
 export default function CVEditPage() {
-  const [original, setOriginal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [pdfLoading, setPdfLoading] = useState(false);
   const [previewContent, setPreviewContent] = useState("");
@@ -28,7 +27,6 @@ export default function CVEditPage() {
     try {
       const response = await fetch("/daniel_cv.md");
       const text = await response.text();
-      setOriginal(text);
       setPreviewContent(text);
 
       // Always set pendingContent, so onCreateEditor can pick it up if needed
@@ -42,25 +40,12 @@ export default function CVEditPage() {
         });
         setPendingContent(null); // Clear pendingContent since we just injected it
       }
-    } catch (error) {
-      setOriginal("Error loading markdown");
+    } catch {
       setPreviewContent("Error loading markdown");
       setPendingContent("Error loading markdown");
     } finally {
       setIsLoading(false);
     }
-  };
-
-  // Reload original content
-  const handleReload = () => {
-    const view = (window as any)._cvEditorView;
-    if (view) {
-      view.dispatch({
-        changes: { from: 0, to: view.state.doc.length, insert: original },
-        selection: { anchor: 0 }
-      });
-    }
-    setPreviewContent(original);
   };
 
   // Download as PDF (calls API route)
@@ -75,7 +60,7 @@ export default function CVEditPage() {
       if (!res.ok) throw new Error("Failed to generate PDF");
       const blob = await res.blob();
       saveAs(blob, "Daniel_Rodriguez_Mariblanca_CV.pdf");
-    } catch (e) {
+    } catch {
       alert("Failed to export PDF");
     } finally {
       setPdfLoading(false);

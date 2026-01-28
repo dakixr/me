@@ -91,7 +91,7 @@ async function generatePdfFromMarkdown(markdown: string): Promise<Uint8Array> {
   return pdfBuffer;
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const mdFilePath = path.join(process.cwd(), 'public', 'daniel_cv.md');
     const markdownContent = await fs.readFile(mdFilePath, 'utf-8');

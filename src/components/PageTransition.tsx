@@ -24,7 +24,6 @@ export const usePageTransition = () => useContext(TransitionContext);
 // Main provider component
 export function PageTransitionProvider({ children }: { children: ReactNode }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [targetHref, setTargetHref] = useState<string | null>(null);
   const [transitionType, setTransitionType] = useState<'fade' | 'slide' | 'scale' | 'none'>('fade');
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
@@ -36,7 +35,6 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
     // Reset transition state when route changes naturally (back button, etc.)
     return () => {
       setIsTransitioning(false);
-      setTargetHref(null);
     };
   }, [pathname]);
 
@@ -51,7 +49,6 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
     if (href === pathname) return;
     
     setIsTransitioning(true);
-    setTargetHref(href);
     
     // Use RAF for smoother timing instead of setTimeout
     requestAnimationFrame(() => {
@@ -62,7 +59,6 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
         // Reset transition state with a short delay to ensure navigation completes
         setTimeout(() => {
           setIsTransitioning(false);
-          setTargetHref(null);
         }, 100);
       }, 350); // Match this closely with exit animation duration for best results
     });

@@ -2,59 +2,12 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
-// Client-side only animated background
-function AnimatedBackground() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {Array.from({ length: 40 }).map((_, i) => {
-        const randomX = Math.floor(Math.random() * 100);
-        const randomY = Math.floor(Math.random() * 100);
-        const size = Math.floor(Math.random() * 3) + 1; // Random size between 1-3
-        const duration = Math.floor(Math.random() * 15) + 15; // Faster animation (15-30s)
-        const delay = Math.random() * 5; // Random delay for more natural movement
-
-        return (
-          <motion.div
-            key={i}
-            className={`absolute w-${size} h-${size} bg-accent rounded-full opacity-20 dark:opacity-40`}
-            style={{
-              left: `${randomX}%`,
-              top: `${randomY}%`,
-              width: `${size * 2}px`,
-              height: `${size * 2}px`,
-            }}
-            animate={{
-              x: [0, Math.random() * 100 - 50, 0],
-              y: [0, Math.random() * 100 - 50, 0],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration,
-              delay,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        );
-      })}
-    </div>
-  );
-}
+import ThreeScene from "./ThreeScene";
 
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center py-12 md:py-24 bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-dark dark:via-dark-100 dark:to-dark-200">
-      <AnimatedBackground />
+      <ThreeScene />
 
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

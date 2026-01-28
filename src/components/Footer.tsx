@@ -3,8 +3,6 @@
 import Link from 'next/link';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-  
   return (
     <footer className="bg-gray-100 dark:bg-dark-300 py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
