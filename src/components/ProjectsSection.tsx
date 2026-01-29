@@ -2,7 +2,6 @@
 
 import { useRef, useState } from 'react';
 import ProjectCard from './ProjectCard';
-import ProjectFilter from './ProjectFilter';
 
 type Project = {
   title: string;
@@ -13,52 +12,51 @@ type Project = {
 };
 
 export default function ProjectsSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [activeFilter, setActiveFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
   const projects: Project[] = [
     {
-      title: 'CostCompiler',
-      description: 'A comprehensive financial platform tailored for production companies in the film industry, offering real-time updates, collaborative cost management, and secure data storage.',
-      link: 'https://costcompiler.com',
-      image: '/projects/costcompiler.jpg',
-      technologies: ['Python', 'Django', 'HTMX', 'htpy', 'Alpine.js', 'Tailwind', 'AWS', 'PostgreSQL', 'Celery'],
+      title: 'htmx-download',
+      description: 'HTMX extension for file downloads with 27 stars, enabling server-driven generation and direct browser downloads.',
+      link: 'https://github.com/dakixr/htmx-download',
+      image: '/projects/htmx-download.jpg',
+      technologies: ['JavaScript', 'HTMX', 'Extensions', 'File handling', 'Browser APIs'],
     },
     {
-      title: 'Ionisium',
-      description: 'Automated document distribution system, personalizing and watermarking each document with the recipient\'s name.',
-      link: 'https://ionisium.es',
-      image: '/projects/ionisium.jpg',
-      technologies: ['Python', 'Django', 'HTMX', 'htpy', 'Alpine.js', 'Tailwind', 'AWS', 'PostgreSQL', 'Celery'],
+      title: 'htmx-global-indicator',
+      description: 'Global loading indicator with a delayed spinner and 24 stars, handling HTMX request state centrally.',
+      link: 'https://github.com/dakixr/htmx-global-indicator',
+      image: '/projects/htmx-global-indicator.jpg',
+      technologies: ['JavaScript', 'HTMX', 'Extensions', 'UX', 'Loading states'],
     },
     {
-      title: 'xpyxl',
-      description: 'Declarative Excel renderer for Python with Tailwind-like styling utilities and multi-engine support.',
-      link: 'https://github.com/dakixr/xpyxl',
-      image: '/projects/xpyxl.jpg',
-      technologies: ['Python', 'openpyxl', 'xlsxwriter', 'Declarative API', 'Styling utilities'],
+      title: 'FormCraftSuite',
+      description: 'Toolkit for turning PDFs into structured, web-ready forms for data capture and workflows.',
+      link: 'https://github.com/dakixr/FormCraftSuite',
+      image: '/projects/formcraftsuite.jpg',
+      technologies: ['Python', 'PDF processing', 'Form generation', 'HTML', 'Web forms'],
     },
     {
-      title: 'htpy-uikit',
-      description: 'htpy component library with a shadcn-style CLI to vendor Tailwind + Alpine-powered UI into projects.',
-      link: 'https://github.com/dakixr/htpy-uikit',
-      image: '/projects/htpy-uikit.jpg',
-      technologies: ['Python', 'htpy', 'TailwindCSS', 'Alpine.js', 'CLI tooling'],
+      title: 'TypedJinja',
+      description: 'Type safety for Jinja2 templates with 2 stars, bringing typed checks and editor hints to templating.',
+      link: 'https://github.com/dakixr/TypedJinja',
+      image: '/projects/typedjinja.jpg',
+      technologies: ['Python', 'Jinja2', 'Type checking', 'IDE support', 'Tooling'],
     },
     {
-      title: 'isbtchot',
-      description: 'Quantitative dashboard analyzing Bitcoin\'s market data to determine macro market trends.',
-      link: 'https://isbtchot.dakixr.dev',
-      image: '/projects/bitcoin.jpg',
-      technologies: ['Python', 'Flask', 'API Integration', 'Plotly'],
+      title: 'Hackathon-AXA',
+      description: 'AXA Hackathon winner with 1 star, a full-stack app built with JHipster and Spring Boot.',
+      link: 'https://github.com/dakixr/Hackathon-AXA',
+      image: '/projects/hackathon-axa.jpg',
+      technologies: ['JavaScript', 'JHipster', 'Spring Boot', 'Angular', 'Full-stack'],
     },
     {
-      title: 'SOCA',
-      description: 'Command Line Interface tool for creating software catalogs from an organization URL.',
-      link: 'https://github.com/oeg-upm/soca',
-      image: '/projects/soca.jpg',
-      technologies: ['Python', 'CLI', 'Web Scraping', 'GitHub'],
+      title: 'htmx-restore-history',
+      description: 'Manual browser history handling for HTMX with 6 stars, enabling explicit navigation control.',
+      link: 'https://github.com/dakixr/htmx-restore-history',
+      image: '/projects/htmx-restore-history.jpg',
+      technologies: ['JavaScript', 'HTMX', 'Extensions', 'Browser history', 'Navigation'],
     },
   ];
 
@@ -66,11 +64,11 @@ export default function ProjectsSection() {
 
   const filteredProjects = projects.filter((project) => {
     const matchesFilter = activeFilter === 'All' || project.technologies.includes(activeFilter);
-    const matchesSearch = 
+    const matchesSearch =
       searchQuery === '' ||
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.technologies.some((tech) => 
+      project.technologies.some((tech) =>
         tech.toLowerCase().includes(searchQuery.toLowerCase())
       );
     return matchesFilter && matchesSearch;
@@ -92,11 +90,9 @@ export default function ProjectsSection() {
     <section id="projects" className="py-20 bg-light dark:bg-dark">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <h2 className="text-3xl text-dark dark:text-light mb-2">
-            My Projects
-          </h2>
-          <div className="h-px w-20 bg-dark dark:bg-light mx-auto mb-4" />
-          <p className="text-lg text-dark-500 dark:text-light-300 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-dark dark:text-light mb-2">My Projects</h2>
+          <div className="h-1 bg-dark dark:bg-light mx-auto mb-4" />
+          <p className="text-lg text-dark-600 dark:text-light-300 max-w-2xl mx-auto">
             Explore my recent personal projects that showcase my technical skills and problem-solving abilities.
           </p>
         </div>
@@ -109,35 +105,29 @@ export default function ProjectsSection() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               aria-label="Search projects"
-              className="w-full px-4 py-2 border border-dark-300 dark:border-light-300 bg-light dark:bg-dark text-dark dark:text-light focus:outline-none"
+              className="w-full px-4 py-2 border border-dark dark:border-light bg-light dark:bg-dark text-dark dark:text-light focus:outline-none"
             />
           </div>
-
-          <ProjectFilter
-            technologies={allTechnologies}
-            activeFilter={activeFilter}
-            onFilterChange={setActiveFilter}
-          />
         </div>
-        
+
         <div className="relative">
           <button
             onClick={scrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-light dark:bg-dark border border-dark-300 dark:border-light-300 hidden md:block"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-light dark:bg-dark border border-dark dark:border-light hidden md:block"
             aria-label="Scroll projects left"
           >
             <svg className="w-6 h-6 text-dark dark:text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          
+
           <button
             onClick={scrollRight}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-light dark:bg-dark border border-dark-300 dark:border-light-300 hidden md:block"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-light dark:bg-dark border border-dark dark:border-light hidden md:block"
             aria-label="Scroll projects right"
           >
             <svg className="w-6 h-6 text-dark dark:text-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7" />
             </svg>
           </button>
 
@@ -147,7 +137,7 @@ export default function ProjectsSection() {
             ))}
           </div>
 
-          <div 
+          <div
             ref={containerRef}
             className="md:hidden overflow-x-auto snap-x snap-mandatory flex gap-6 pb-8 -mx-4 px-4 scrollbar-hide"
           >
@@ -169,7 +159,7 @@ export default function ProjectsSection() {
                   setSearchQuery('');
                 }}
                 aria-label="Clear all filters"
-                className="mt-4 px-6 py-2 border-2 border-dark dark:border-light text-dark dark:text-light hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark"
+                className="mt-4 px-6 py-2 border-2 border dark:border-light text-dark dark:text-light hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark"
               >
                 Clear filters
               </button>
