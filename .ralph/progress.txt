@@ -78,3 +78,53 @@
 [2026-01-29T05:08:49.649325+00:00] === Harness started (max_iterations=100, max_failures=10) ===
 [2026-01-29T05:08:49.650639+00:00] Resuming item FEAT-007 (attempt 1): Create custom cursor with reactive effects
 [2026-01-29T05:12:17.815460+00:00] Item FEAT-007 completed successfully
+[2026-01-29T05:12:17.980892+00:00] Starting item FEAT-008 (attempt 1): Add interactive dark/light mode with smooth transitions
+[2026-01-29T05:20:00.000000+00:00] Implemented FEAT-008: Add interactive dark/light mode with smooth transitions
+
+Created ThemeToggle.tsx component with:
+  - Smooth animated sun/moon icon transitions using framer-motion
+  - Rotation animations (90 degrees to -90 degrees) when switching themes
+  - Scale and opacity animations for smooth icon morphing
+  - Hover and tap interactions (scale up to 1.1, scale down to 0.95)
+  - Color-coded icons: yellow-300 for sun, indigo-300 for moon
+  - Proper accessibility labels that update dynamically
+  - Prevents hydration mismatch with mounted state
+
+Updated app/globals.css:
+  - Added smooth color transitions for all themeable properties (background-color, color, border-color, box-shadow)
+  - 0.3s ease-in-out timing function for seamless theme switching
+  - Added theme-aware animations (fadeIn, slideUp)
+  - Added .theme-transition utility class
+  - Enhanced prefers-reduced-motion media query to disable all transitions when requested
+  - Updated body styles with explicit transition classes
+
+Updated tailwind.config.ts:
+  - Enhanced accent color palette with full 50-900 scale
+  - Added light theme color palette (light-50 to light-900)
+  - Accent colors use sky blue (#0ea5e9) base with full gradient
+  - Colors are consistent across both light and dark modes
+  - All colors follow semantic naming convention
+
+Updated src/components/Navbar.tsx:
+  - Replaced inline theme toggle buttons with new ThemeToggle component
+  - Both desktop and mobile versions now use the same animated component
+  - Removed unused theme state variables and useTheme import
+  - Maintained all existing functionality and layout
+
+Updated app/layout.tsx:
+  - Enhanced body styling with proper theme classes
+  - Uses light-50 for light mode, dark-DEFAULT for dark mode
+  - Added explicit transition-colors duration-300 class for smooth theme switching
+
+Key Features:
+  - Theme preference persists across sessions (via next-themes localStorage)
+  - All components support both themes with consistent transitions
+  - Color interpolation is smooth with 300ms duration
+  - Accent colors complement the overall design in both themes
+  - Respects user accessibility preferences (prefers-reduced-motion)
+  - No hydration flash due to proper mounted state handling
+
+Verification:
+  - pnpm build: SUCCESS
+  - pnpm lint: SUCCESS
+[2026-01-29T05:16:41.330268+00:00] Item FEAT-008 completed successfully
