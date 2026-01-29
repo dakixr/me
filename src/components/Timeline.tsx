@@ -110,6 +110,13 @@ function TimelineNode({ experience, index, isExpanded, onToggle, isMobile }: Tim
   const nodeRef = useRef(null);
   const isInView = useInView(nodeRef, { once: true, margin: "-100px" });
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onToggle();
+    }
+  };
+
   return (
     <motion.div
       ref={nodeRef}
@@ -123,10 +130,15 @@ function TimelineNode({ experience, index, isExpanded, onToggle, isMobile }: Tim
           initial={{ scale: 0 }}
           animate={isInView ? { scale: 1 } : { scale: 0 }}
           transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
-          className={`w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center text-white font-bold text-lg shadow-lg mx-auto mb-4 cursor-pointer z-10 relative ${
+          className={`w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center text-white font-bold text-lg shadow-lg mx-auto mb-4 cursor-pointer z-10 relative focus:outline-none focus:ring-4 focus:ring-accent/30 ${
             isExpanded ? 'ring-4 ring-accent/30' : ''
           }`}
           onClick={onToggle}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+          role="button"
+          aria-expanded={isExpanded}
+          aria-label={`Toggle details for ${experience.company}`}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -140,10 +152,15 @@ function TimelineNode({ experience, index, isExpanded, onToggle, isMobile }: Tim
             height: isExpanded ? 'auto' : 'auto'
           }}
           transition={{ duration: 0.3 }}
-          className={`bg-white dark:bg-dark-100 rounded-xl shadow-lg p-6 cursor-pointer hover:shadow-xl transition-shadow duration-300 border-2 ${
+          className={`bg-white dark:bg-dark-100 rounded-xl shadow-lg p-6 cursor-pointer hover:shadow-xl transition-shadow duration-300 border-2 focus:outline-none focus:ring-2 focus:ring-accent ${
             isExpanded ? 'border-accent' : 'border-transparent'
           }`}
           onClick={onToggle}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+          role="button"
+          aria-expanded={isExpanded}
+          aria-label={`${experience.company} - ${experience.title}, Press Enter to ${isExpanded ? 'collapse' : 'expand'}`}
         >
           <div className="flex items-center justify-between mb-3">
             <div>

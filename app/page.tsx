@@ -28,14 +28,19 @@ const Footer = dynamic(() => import('@/components/Footer'));
 export default function Home() {
   return (
     <main>
+      <a href="#main-content" className="skip-to-content">
+        Skip to main content
+      </a>
       <ParallaxBackground />
       <Navbar />
-      <HeroSection />
-      <ProjectsSection />
-      <SkillsSection />
-      <CVSection />
-      <ContactSection />
-      <Footer />
+      <div id="main-content">
+        <HeroSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <CVSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </main>
   );
 } 

@@ -168,6 +168,7 @@ export default function ProjectsSection() {
               placeholder="Search projects..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Search projects"
               className="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-dark-300 text-gray-900 dark:text-white border border-gray-200 dark:border-dark-400 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
             />
           </motion.div>
@@ -267,7 +268,8 @@ export default function ProjectsSection() {
                   setActiveFilter('All');
                   setSearchQuery('');
                 }}
-                className="mt-4 px-6 py-2 bg-accent text-white rounded-lg hover:bg-accent-dark transition-colors duration-300"
+                aria-label="Clear all filters"
+                className="mt-4 px-6 py-2 bg-accent text-white rounded-lg hover:bg-accent-dark transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               >
                 Clear filters
               </button>

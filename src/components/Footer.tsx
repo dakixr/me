@@ -18,19 +18,19 @@ export default function Footer() {
           </div>
           
           <div className="flex space-x-6 mb-4 md:mb-0">
-            <Link href="#about" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300">
+            <Link href="#about" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded px-1">
               About
             </Link>
-            <Link href="#projects" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300">
+            <Link href="#projects" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded px-1">
               Projects
             </Link>
-            <Link href="#skills" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300">
+            <Link href="#skills" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded px-1">
               Skills
             </Link>
-            <Link href="#cv" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300">
+            <Link href="#cv" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded px-1">
               CV
             </Link>
-            <Link href="#contact" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300">
+            <Link href="#contact" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded px-1">
               Contact
             </Link>
           </div>

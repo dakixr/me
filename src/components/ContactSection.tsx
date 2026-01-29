@@ -178,7 +178,8 @@ export default function ContactSection() {
                       href="https://github.com/dakixr"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-accent dark:text-gray-200 dark:hover:text-accent transition-colors duration-300"
+                      aria-label="GitHub Profile"
+                      className="text-gray-600 hover:text-accent dark:text-gray-200 dark:hover:text-accent transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded"
                     >
                       <svg
                         className="w-5 h-5"
@@ -192,7 +193,8 @@ export default function ContactSection() {
                       href="https://www.linkedin.com/in/daniel-rodr%C3%ADguez-mariblanca-00a26a173/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-accent dark:text-gray-200 dark:hover:text-accent transition-colors duration-300"
+                      aria-label="LinkedIn Profile"
+                      className="text-gray-600 hover:text-accent dark:text-gray-200 dark:hover:text-accent transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded"
                     >
                       <svg
                         className="w-5 h-5"

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import dynamic from "next/dynamic";
 import MagneticButton from "./MagneticButton";
 
@@ -60,12 +59,20 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4"
               suppressHydrationWarning
             >
-              <Link href="#projects" className="inline-block">
-                <MagneticButton variant="primary">View Projects</MagneticButton>
-              </Link>
-              <Link href="#contact" className="inline-block">
-                <MagneticButton variant="outline">Contact Me</MagneticButton>
-              </Link>
+              <MagneticButton 
+                variant="primary" 
+                onClick={() => window.location.href = '#projects'}
+                aria-label="View projects section"
+              >
+                View Projects
+              </MagneticButton>
+              <MagneticButton 
+                variant="outline" 
+                onClick={() => window.location.href = '#contact'}
+                aria-label="Go to contact section"
+              >
+                Contact Me
+              </MagneticButton>
             </motion.div>
           </motion.div>
 
@@ -77,41 +84,43 @@ export default function HeroSection() {
             className="hidden md:block"
             suppressHydrationWarning
           >
-            <div className="bg-dark-200 rounded-lg shadow-xl overflow-hidden">
-              <div className="flex items-center space-x-2 bg-dark-300 px-4 py-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="bg-dark-200 rounded-lg shadow-xl overflow-hidden" role="region" aria-label="Terminal code block">
+              <div className="flex items-center space-x-2 bg-dark-300 px-4 py-2" role="presentation">
+                <div className="w-3 h-3 rounded-full bg-red-500" aria-hidden="true"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500" aria-hidden="true"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500" aria-hidden="true"></div>
               </div>
-              <div className="p-4 font-mono text-sm text-gray-300">
-                <p>
-                  <span className="text-green-400">danielrm@dev</span>:
-                  <span className="text-blue-400">~</span>$ whoami
-                </p>
-                <p className="mt-2">
-                  Senior Software Engineer with a passion for creating
-                  efficient, innovative code solutions.
-                </p>
-                <p className="mt-4">
-                  <span className="text-green-400">danielrm@dev</span>:
-                  <span className="text-blue-400">~</span>$ skills
-                </p>
-                <p className="mt-2 text-yellow-400">
-                  Python | Java | JS | AWS | ML | Docker |{" "}
-                  <a className="text-accent" href="#skills">
-                    Show more
-                  </a>
-                </p>
-                <p className="mt-4">
-                  <span className="text-green-400">danielrm@dev</span>:
-                  <span className="text-blue-400">~</span>$ experience
-                </p>
-                <p className="mt-2">
-                  TMC @ Bank of Luxembourg Investments & Deloitte <br></br>{" "}
-                  Amazon <br></br> Santander Bank<br></br>
-                  <span className="text-accent blink">█</span>
-                </p>
-              </div>
+              <pre className="p-4 font-mono text-sm text-gray-300">
+                <code>
+                  <p>
+                    <span className="text-green-400">danielrm@dev</span>:
+                    <span className="text-blue-400">~</span>$ whoami
+                  </p>
+                  <p className="mt-2">
+                    Senior Software Engineer with a passion for creating
+                    efficient, innovative code solutions.
+                  </p>
+                  <p className="mt-4">
+                    <span className="text-green-400">danielrm@dev</span>:
+                    <span className="text-blue-400">~</span>$ skills
+                  </p>
+                  <p className="mt-2 text-yellow-400">
+                    Python | Java | JS | AWS | ML | Docker |{" "}
+                    <a className="text-accent focus:outline-none focus:ring-2 focus:ring-accent" href="#skills">
+                      Show more
+                    </a>
+                  </p>
+                  <p className="mt-4">
+                    <span className="text-green-400">danielrm@dev</span>:
+                    <span className="text-blue-400">~</span>$ experience
+                  </p>
+                  <p className="mt-2">
+                    TMC @ Bank of Luxembourg Investments & Deloitte <br></br>{" "}
+                    Amazon <br></br> Santander Bank<br></br>
+                    <span className="text-accent blink">█</span>
+                  </p>
+                </code>
+              </pre>
             </div>
           </motion.div>
         </div>

@@ -45,13 +45,19 @@ export default function SkillBar({ skill, proficiency, description, delay = 0 }:
       className="relative"
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
+      onFocus={() => setShowTooltip(true)}
+      onBlur={() => setShowTooltip(false)}
+      tabIndex={0}
+      role="button"
+      aria-label={`${skill}: ${proficiency}%${description ? `, ${description}` : ''}`}
+      aria-describedby={description ? `tooltip-${skill.replace(/\s+/g, '-')}` : undefined}
     >
       <div className="flex justify-between items-center mb-2">
         <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{skill}</span>
         <span className="text-xs text-gray-500 dark:text-gray-400">{proficiency}%</span>
       </div>
-      
-      <div className="h-3 bg-gray-200 dark:bg-dark-400 rounded-full overflow-hidden">
+
+      <div className="h-3 bg-gray-200 dark:bg-dark-400 rounded-full overflow-hidden" role="progressbar" aria-valuenow={proficiency} aria-valuemin={0} aria-valuemax={100} aria-hidden="true">
         <motion.div
           variants={barVariants}
           initial="hidden"
@@ -70,9 +76,11 @@ export default function SkillBar({ skill, proficiency, description, delay = 0 }:
       {description && (
         <>
           <div
+            id={`tooltip-${skill.replace(/\s+/g, '-')}`}
             className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 dark:bg-dark-300 text-white text-xs rounded-lg shadow-lg whitespace-nowrap z-10 transition-all duration-200 ${
               showTooltip ? 'opacity-100 visible' : 'opacity-0 invisible'
             }`}
+            role="tooltip"
           >
             {description}
             <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-dark-300" />
