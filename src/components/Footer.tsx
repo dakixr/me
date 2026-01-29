@@ -2,8 +2,32 @@
 
 import Link from 'next/link';
 import { TransitionLink } from './TransitionLink';
+import { useState, useCallback } from 'react';
 
 export default function Footer() {
+  const [clickCount, setClickCount] = useState(0);
+  const [showMessage, setShowMessage] = useState(false);
+
+  const handleCopyrightClick = useCallback(() => {
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
+
+    if (newCount >= 5) {
+      setShowMessage(true);
+      setClickCount(0);
+
+      window.dispatchEvent(new CustomEvent('footer-easter-egg'));
+
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 4000);
+    }
+
+    setTimeout(() => {
+      setClickCount(0);
+    }, 2000);
+  }, [clickCount]);
+
   return (
     <footer className="bg-gray-100 dark:bg-dark-300 py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,6 +85,22 @@ export default function Footer() {
           </div>
         </div>
 
+        {showMessage && (
+          <div className="mt-4 text-center">
+            <p className="text-sm font-semibold text-accent">🎉 You found the secret! Click the footer 5 times for confetti!</p>
+          </div>
+        )}
+
+        <div className="mt-6 pt-6 border-t border-gray-300 dark:border-dark-400 text-center">
+          <button
+            onClick={handleCopyrightClick}
+            className="text-sm text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded px-2"
+            aria-label="Copyright information"
+            data-testid="footer-copyright"
+          >
+            © {new Date().getFullYear()} Daniel Rodríguez Mariblanca. All rights reserved.
+          </button>
+        </div>
       </div>
     </footer>
   );

@@ -25,6 +25,11 @@ const ContactSection = dynamic(() => import('@/components/ContactSection'), {
 
 const Footer = dynamic(() => import('@/components/Footer'));
 
+const EasterEggs = dynamic(() => import('@/components/EasterEggs'), {
+  ssr: false,
+  loading: () => null,
+});
+
 export default function Home() {
   return (
     <main>
@@ -33,6 +38,7 @@ export default function Home() {
       </a>
       <ParallaxBackground />
       <Navbar />
+      <EasterEggs />
       <div id="main-content">
         <HeroSection />
         <ProjectsSection />
