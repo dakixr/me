@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import ContactForm from "./ContactForm";
 
 export default function ContactSection() {
   return (
@@ -205,6 +206,26 @@ export default function ContactSection() {
                 </div>
               </div>
             </div>
+          </motion.div>
+        </div>
+
+        <div className="max-w-3xl mx-auto mt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-white dark:bg-dark-100 rounded-xl p-8 shadow-lg dark:shadow-none"
+          >
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+              Send a Message
+            </h3>
+            <ContactForm
+              onSubmit={async (data) => {
+                console.log('Form submitted:', data);
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+              }}
+            />
           </motion.div>
         </div>
       </div>
