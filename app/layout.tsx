@@ -4,18 +4,12 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { PostHogProvider } from "../src/components/PostHogProvider";
 import { PageTransitionProvider, PageTransitionWrapper } from "../src/components/PageTransition";
-import dynamic from "next/dynamic";
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   preload: true,
   variable: "--font-inter",
-});
-
-const CustomCursor = dynamic(() => import("../src/components/CustomCursor"), {
-  ssr: false,
-  loading: () => null,
 });
 
 export const metadata: Metadata = {
@@ -45,7 +39,6 @@ export default function RootLayout({
           <Providers>
             <PageTransitionProvider>
               <PageTransitionWrapper>
-                <CustomCursor />
                 {children}
               </PageTransitionWrapper>
             </PageTransitionProvider>

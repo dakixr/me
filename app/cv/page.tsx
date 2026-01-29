@@ -4,9 +4,12 @@ import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import rehypeHighlight from 'rehype-highlight';
+import rehypeSanitize from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { useTransitionNavigate } from '../../src/components/useTransitionNavigate';
+import { markdownSanitizeSchema } from '../../src/lib/markdownSanitize';
 
 export default function CVPage() {
   const [content, setContent] = useState<string>('');
@@ -107,9 +110,9 @@ export default function CVPage() {
       >
         <div className="container max-w-4xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center">
-            <a href="/" className="flex items-center text-xl font-bold text-gray-900 dark:text-white hover:text-accent dark:hover:text-accent transition duration-300">
+            <Link href="/" className="flex items-center text-xl font-bold text-gray-900 dark:text-white hover:text-accent dark:hover:text-accent transition duration-300">
               <span className="text-accent">&lt;</span>Daniel<span className="text-accent">/&gt;</span>
-            </a>
+            </Link>
           </div>
           <div className="flex justify-end gap-4">
             <motion.a 
@@ -154,7 +157,7 @@ export default function CVPage() {
         <div className="container mx-auto max-w-4xl">
           <article className="prose dark:prose-invert prose-slate max-w-none">
             <ReactMarkdown
-              rehypePlugins={[rehypeRaw, rehypeHighlight]}
+              rehypePlugins={[rehypeRaw, rehypeHighlight, [rehypeSanitize, markdownSanitizeSchema]]}
               remarkPlugins={[remarkGfm]}
             >
               {content}

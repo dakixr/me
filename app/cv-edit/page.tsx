@@ -5,11 +5,13 @@ import dynamic from "next/dynamic";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
+import rehypeSanitize from "rehype-sanitize";
 import remarkGfm from "remark-gfm";
 import { saveAs } from "file-saver";
 import { EditorView } from '@codemirror/view';
 import { markdown } from "@codemirror/lang-markdown";
 import { oneDark } from "@codemirror/theme-one-dark";
+import { markdownSanitizeSchema } from "../../src/lib/markdownSanitize";
 
 const CodeMirror = dynamic(() => import("@uiw/react-codemirror"), { ssr: false });
 const codeMirrorExtensions = [markdown(), EditorView.lineWrapping];
@@ -137,7 +139,7 @@ export default function CVEditPage() {
           <div className="flex-1 min-h-0 px-6 pb-6 pt-6 flex flex-col">
             <div className="flex-1 overflow-auto rounded-lg border border-gray-800 shadow-lg bg-[#23272f] p-6 prose prose-invert max-w-none scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900">
               <ReactMarkdown
-                rehypePlugins={[rehypeRaw, rehypeHighlight]}
+                rehypePlugins={[rehypeRaw, rehypeHighlight, [rehypeSanitize, markdownSanitizeSchema]]}
                 remarkPlugins={[remarkGfm]}
                 components={{}}
               >

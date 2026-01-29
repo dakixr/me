@@ -7,362 +7,66 @@
   },
   "global": {
     "verify": [
-      "pnpm build",
-      "pnpm lint"
+      "npm run lint",
+      "npm run build"
     ]
   },
   "items": [
     {
-      "id": "FEAT-001",
-      "title": "Implement immersive 3D hero section with Three.js",
-      "description": "Create a stunning 3D hero section using Three.js with interactive particles, mouse-following effects, and smooth animations. The scene should be performant and visually striking, featuring a 3D representation of code/tech elements that respond to mouse movement.",
+      "id": "UPGRADE-001",
+      "title": "Upgrade Next.js to the latest stable version",
+      "description": "Update Next.js from the current version (14.2.33) to the latest stable version available. This upgrade is a prerequisite for the redesign task to ensure the project uses the most current features and security patches.\n\n**Requirements:**\n- Check the latest stable Next.js version (use `npm view next version` or check nextjs.org)\n- Update package.json to install the latest version\n- Run `npm install` or `pnpm install` to update dependencies\n- Review and update any deprecated APIs or breaking changes\n- Ensure all existing functionality still works\n- Test the dev server with `npm run dev`\n- Verify the build succeeds with `npm run build`\n- Run linter with `npm run lint` and fix any issues\n\n**Notes:**\n- Document any breaking changes encountered\n- Update related dependencies if needed (e.g., react-dom, eslint-config-next)\n- Keep TypeScript types in sync",
       "acceptance_criteria": [
-        "Three.js scene loads smoothly without blocking initial render",
-        "Mouse interactions work smoothly on desktop and touch devices",
-        "Performance impact is minimal (check Lighthouse score)",
-        "Scene is responsive across all screen sizes"
+        "Next.js upgraded to the latest stable version",
+        "All dependencies updated without conflicts",
+        "Dev server starts successfully with `npm run dev`",
+        "Production build succeeds with `npm run build`",
+        "No linting errors with `npm run lint`",
+        "All existing features still functional (CV editor, API routes, PDF generation)",
+        "No console errors or warnings in the browser"
       ],
       "files_hint": [
-        "src/components/HeroSection.tsx",
-        "src/components/ThreeScene.tsx"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 3,
-        "last_error": null,
-        "done_at": "2026-01-28 22:10:08.898439+00:00"
-      }
-    },
-    {
-      "id": "FEAT-002",
-      "title": "Add interactive project showcase with 3D card effects",
-      "description": "Transform the projects section into an interactive showcase with 3D tilt effects on hover, smooth page transitions, and expandable project details. Each project card should have unique visuals and micro-interactions.",
-      "acceptance_criteria": [
-        "3D tilt effect works smoothly on hover",
-        "Project details expand/collapse with smooth animations",
-        "Cards are fully accessible via keyboard navigation",
-        "Mobile view provides swipeable carousel experience"
-      ],
-      "files_hint": [
-        "src/components/ProjectsSection.tsx",
-        "src/components/ProjectCard.tsx"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-28 22:12:39.859117+00:00"
-      }
-    },
-    {
-      "id": "FEAT-003",
-      "title": "Create animated skill visualization with dynamic progress",
-      "description": "Replace static skills list with dynamic, animated visualization. Use animated bars, circles, or network graphs that animate on scroll. Group skills by category and show relative proficiency with smooth filling animations.",
-      "acceptance_criteria": [
-        "Skills animate smoothly when scrolled into view",
-        "Each skill category has distinct visual treatment",
-        "Interactive tooltips show detailed skill information",
-        "Responsive design works on all devices"
-      ],
-      "files_hint": [
-        "src/components/SkillsSection.tsx",
-        "src/components/SkillBar.tsx"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-28 22:14:50.944164+00:00"
-      }
-    },
-    {
-      "id": "FEAT-004",
-      "title": "Add interactive timeline for experience section",
-      "description": "Create a vertical or horizontal interactive timeline for the CV/experience section with animated nodes, connecting lines that draw as you scroll, and expandable job details with company logos and tech stack badges.",
-      "acceptance_criteria": [
-        "Timeline draws progressively as user scrolls",
-        "Clicking on a node expands detailed job information",
-        "Responsive layout switches between vertical (mobile) and horizontal (desktop)",
-        "All experience entries from CV are included"
-      ],
-      "files_hint": [
-        "src/components/CVSection.tsx",
-        "src/components/Timeline.tsx"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-28 22:19:22.187386+00:00"
-      }
-    },
-    {
-      "id": "FEAT-005",
-      "title": "Implement smooth scroll progress indicator",
-      "description": "Add a reading progress indicator at the top of the page that shows scroll progress. Make it smooth and visually integrated with the design, with optional section highlighting as you scroll through different sections.",
-      "acceptance_criteria": [
-        "Progress bar updates smoothly on scroll",
-        "Progress bar is visible but not obtrusive",
-        "Works correctly with smooth scrolling enabled",
-        "Section navigation highlights current section"
-      ],
-      "files_hint": [
-        "src/components/Navbar.tsx",
-        "src/components/ScrollProgress.tsx"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-28 22:23:07.061707+00:00"
-      }
-    },
-    {
-      "id": "FEAT-006",
-      "title": "Add magnetic button effects and micro-interactions",
-      "description": "Implement magnetic hover effects on buttons and interactive elements. Buttons should subtly follow the cursor before clicking. Add satisfying click animations, ripple effects, and other micro-interactions throughout the site.",
-      "acceptance_criteria": [
-        "Magnetic effect works smoothly without being distracting",
-        "Click animations provide satisfying feedback",
-        "All buttons have consistent interaction patterns",
-        "Effects don't interfere with accessibility"
-      ],
-      "files_hint": [
-        "src/components/MagneticButton.tsx",
-        "app/globals.css"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-28 22:28:39.247471+00:00"
-      }
-    },
-    {
-      "id": "FEAT-007",
-      "title": "Create custom cursor with reactive effects",
-      "description": "Implement a custom cursor that changes based on what it's hovering over (links, buttons, interactive elements). Add trailing effects, blend modes, and reactive animations that make the cursor feel alive and responsive.",
-      "acceptance_criteria": [
-        "Custom cursor doesn't interfere with system cursor functionality",
-        "Cursor changes appropriately based on hover target",
-        "Performance impact is minimal",
-        "Falls back gracefully on touch devices"
-      ],
-      "files_hint": [
-        "src/components/CustomCursor.tsx",
-        "app/layout.tsx"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-29 05:12:17.811366+00:00"
-      }
-    },
-    {
-      "id": "FEAT-008",
-      "title": "Add interactive dark/light mode with smooth transitions",
-      "description": "Enhance the existing dark/light mode toggle with smooth color transitions, theme-aware animations, and persistent preference storage. Add unique accent colors for each theme that complement the overall design.",
-      "acceptance_criteria": [
-        "Theme transition is smooth with color interpolation",
-        "Theme preference persists across sessions",
-        "All components support both themes correctly",
-        "Accent colors are well-chosen for each theme"
-      ],
-      "files_hint": [
-        "src/components/ThemeToggle.tsx",
-        "tailwind.config.ts",
-        "app/globals.css"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-29 05:16:41.328789+00:00"
-      }
-    },
-    {
-      "id": "FEAT-009",
-      "title": "Implement scroll-triggered animations for all sections",
-      "description": "Add scroll-triggered animations using Intersection Observer or Framer Motion. Elements should fade in, slide up, or scale as they enter the viewport. Create varied animation patterns for different sections to keep it interesting.",
-      "acceptance_criteria": [
-        "Animations trigger correctly when elements enter viewport",
-        "Different sections have varied animation patterns",
-        "Animations are smooth and performant",
-        "Reduced motion preference is respected"
-      ],
-      "files_hint": [
-        "src/components/AnimatedSection.tsx",
-        "src/hooks/useScrollAnimation.ts"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-29 05:22:49.284090+00:00"
-      }
-    },
-    {
-      "id": "FEAT-010",
-      "title": "Add parallax effects to background elements",
-      "description": "Implement parallax scrolling effects on background shapes, gradients, or images. Create depth and movement that responds to scroll speed and direction. Use subtle effects that enhance without being overwhelming.",
-      "acceptance_criteria": [
-        "Parallax effects are subtle and enhance the design",
-        "Performance is maintained (check for jank)",
-        "Effects work smoothly on all devices",
-        "Don't cause motion sickness with excessive movement"
-      ],
-      "files_hint": [
-        "src/components/ParallaxBackground.tsx"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-29 05:25:04.217994+00:00"
-      }
-    },
-    {
-      "id": "FEAT-011",
-      "title": "Create interactive contact form with real-time validation",
-      "description": "Enhance the contact form with real-time validation, animated success/error states, and a better UX. Add field animations, inline error messages, and a satisfying submission experience with visual feedback.",
-      "acceptance_criteria": [
-        "Form validates in real-time with clear error messages",
-        "Success/error states are visually distinct and animated",
-        "Form is fully accessible via keyboard",
-        "All form submissions work correctly"
-      ],
-      "files_hint": [
-        "src/components/ContactSection.tsx",
-        "src/components/ContactForm.tsx"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-29 05:27:55.139361+00:00"
-      }
-    },
-    {
-      "id": "FEAT-012",
-      "title": "Add loading animation and smooth page transitions",
-      "description": "Create a sophisticated loading animation that plays on initial page load. Implement smooth transitions between pages/sections with shared element animations and seamless state changes.",
-      "acceptance_criteria": [
-        "Loading animation plays smoothly and doesn't feel too long",
-        "Page transitions are smooth and don't cause jarring jumps",
-        "Shared elements animate predictably between states",
-        "Loading state handles errors gracefully"
-      ],
-      "files_hint": [
-        "src/components/PageTransition.tsx",
-        "src/components/LoadingScreen.tsx",
-        "app/layout.tsx"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-29 05:35:54.091169+00:00"
-      }
-    },
-    {
-      "id": "FEAT-013",
-      "title": "Implement interactive project filters and search",
-      "description": "Add filtering capabilities to the projects section by technology, type, or category. Include a search bar that filters projects in real-time. Make filtering and searching smooth with animated transitions.",
-      "acceptance_criteria": [
-        "Filters work correctly for all project categories",
-        "Search functionality finds matching projects",
-        "Filter transitions are smooth and animated",
-        "All projects are visible when no filters are applied"
-      ],
-      "files_hint": [
-        "src/components/ProjectsSection.tsx",
-        "src/components/ProjectFilter.tsx"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-29 06:10:52.708238+00:00"
-      }
-    },
-    {
-      "id": "PERF-001",
-      "title": "Optimize performance and improve Core Web Vitals",
-      "description": "Audit the site for performance issues and optimize load times. Implement code splitting, lazy loading, image optimization, and other performance best practices. Target Core Web Vitals scores above 90.",
-      "acceptance_criteria": [
-        "Lighthouse performance score is above 90",
-        "LCP (Largest Contentful Paint) is under 2.5s",
-        "FID (First Input Delay) is under 100ms",
-        "CLS (Cumulative Layout Shift) is under 0.1"
-      ],
-      "files_hint": [
+        "package.json",
+        "package-lock.json",
+        "pnpm-lock.yaml",
         "next.config.mjs",
-        "app/layout.tsx"
+        "tsconfig.json"
       ],
       "verify": null,
       "status": {
         "state": "done",
         "attempts": 1,
         "last_error": null,
-        "done_at": "2026-01-29 06:18:42.209997+00:00"
+        "done_at": "2026-01-29 08:58:20.442433+00:00"
       }
     },
     {
-      "id": "A11Y-001",
-      "title": "Enhance accessibility across the entire site",
-      "description": "Conduct a full accessibility audit and improve ARIA labels, keyboard navigation, focus states, color contrast, and screen reader support. Ensure the site is usable by everyone.",
+      "id": "REDESIGN-002",
+      "title": "Redesign portfolio with minimalist monospace two-tone aesthetic",
+      "description": "Complete visual redesign of the portfolio site (me project) to achieve a minimalist, developer-focused aesthetic with the following specifications:\n\n**Core Design Principles:**\n1. **Monospace Typography**: Use monospace fonts throughout (e.g., JetBrains Mono, Fira Code, or similar) to appeal to developers\n2. **Two-Tone Color Palette**: Strictly two colors - a dark tone (not pure black, e.g., #1a1a1a or #0f0f0f) and a light tone (not pure white, e.g., #f5f5f5 or #fafafa)\n3. **Minimalist Layout**: Clean, uncluttered design with ample whitespace and clear visual hierarchy\n4. **No Animations**: Remove all non-essential animations. If any animations exist, they must be extremely subtle and purposeful (e.g., simple fade-in on page load)\n\n**Technical Requirements:**\n- Update Tailwind config to use the new two-tone color palette\n- Configure typography to use monospace fonts globally\n- Remove or simplify all existing Three.js/3D elements unless absolutely necessary\n- Remove framer-motion animations or replace with CSS transitions if absolutely needed\n- Ensure all existing functionality remains intact (CV editing, API routes, etc.)\n- Maintain responsive design principles\n- Keep PostHog analytics working\n\n**Deliverables:**\n- Updated tailwind.config.ts with new color scheme and font settings\n- Modified app/globals.css for new typography and color foundation\n- Updated app/layout.tsx with monospace font configuration\n- Redesigned app/page.tsx with minimalist two-tone aesthetic\n- Any other components in src/ folder updated to match new design\n- All existing features (CV editor, API endpoints) still functional\n\n**Design Examples to Emulate:**\n- Think: terminal/IDE aesthetic but modern and polished\n- Inspiration: stripe.dev docs, GitHub's dark mode, Vercel's minimalist branding\n- Emphasis on content over decoration, clarity over cleverness",
       "acceptance_criteria": [
-        "All interactive elements are keyboard accessible",
-        "Color contrast meets WCAG AA standards",
-        "Screen reader navigation works smoothly",
-        "Focus states are visible and clear"
+        "Site uses only two colors throughout (dark and light variants, not pure #000 and #fff)",
+        "All typography is monospace (including headings, body text, code snippets)",
+        "No animations except extremely subtle transitions (max 200ms, simple fade)",
+        "Three.js/3D elements removed or simplified to flat 2D equivalents",
+        "All existing functionality preserved (CV editor, API routes, PostHog)",
+        "Site builds successfully with `npm run build`",
+        "No linting errors with `npm run lint`",
+        "Responsive design maintained across desktop and mobile"
       ],
       "files_hint": [
-        "src/components/*.tsx",
-        "app/globals.css"
+        "tailwind.config.ts",
+        "app/globals.css",
+        "app/layout.tsx",
+        "app/page.tsx",
+        "src/**/*.tsx"
       ],
       "verify": null,
       "status": {
-        "state": "done",
-        "attempts": 1,
+        "state": "todo",
+        "attempts": 0,
         "last_error": null,
-        "done_at": "2026-01-29 06:33:10.597553+00:00"
-      }
-    },
-    {
-      "id": "FEAT-014",
-      "title": "Implement Easter eggs and hidden interactions",
-      "description": "Add delightful Easter eggs and hidden interactions throughout the site. These could be triggered by specific actions, key combinations, or patterns. Make them fun but not intrusive to the main experience.",
-      "acceptance_criteria": [
-        "Easter eggs are discoverable but not obvious",
-        "They don't interfere with normal site usage",
-        "At least 3-5 hidden interactions are implemented",
-        "They add personality without being gimmicky"
-      ],
-      "files_hint": [
-        "src/components/EasterEggs.tsx",
-        "src/hooks/useKonamiCode.ts"
-      ],
-      "verify": null,
-      "status": {
-        "state": "done",
-        "attempts": 1,
-        "last_error": null,
-        "done_at": "2026-01-29 06:44:00.551991+00:00"
+        "done_at": null
       }
     }
   ]

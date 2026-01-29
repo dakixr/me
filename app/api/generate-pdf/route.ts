@@ -3,8 +3,14 @@ import puppeteer from 'puppeteer';
 import fs from 'fs/promises';
 import path from 'path';
 import { remark } from 'remark';
-import remarkHtml from 'remark-html';
 import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
+import rehypeStringify from 'rehype-stringify';
+import { markdownSanitizeSchema } from '../../../src/lib/markdownSanitize';
+
+const MAX_MARKDOWN_LENGTH = 200_000;
 
 function renderHtmlFromMarkdown(htmlContent: string) {
   return `
@@ -54,7 +60,12 @@ function renderHtmlFromMarkdown(htmlContent: string) {
 }
 
 async function markdownToHtml(markdown: string): Promise<string> {
-  const processor = remark().use(remarkGfm).use(remarkHtml);
+  const processor = remark()
+    .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeSanitize, markdownSanitizeSchema)
+    .use(rehypeStringify);
   const htmlResult = await processor.process(markdown);
   return String(htmlResult);
 }
@@ -76,7 +87,7 @@ async function generatePdfFromMarkdown(markdown: string): Promise<Uint8Array> {
     ],
   });
   const page = await browser.newPage();
-  await page.setContent(completeHtml, { waitUntil: 'networkidle0' });
+  await page.setContent(completeHtml, { waitUntil: 'networkidle0', timeout: 30_000 });
   const pdfBuffer = await page.pdf({
     format: 'A4',
     printBackground: true,
@@ -116,6 +127,9 @@ export async function POST(request: NextRequest) {
     const { markdown } = await request.json();
     if (typeof markdown !== 'string') {
       return NextResponse.json({ error: 'Invalid markdown' }, { status: 400 });
+    }
+    if (markdown.length > MAX_MARKDOWN_LENGTH) {
+      return NextResponse.json({ error: 'Markdown is too large' }, { status: 413 });
     }
     const pdfBuffer = await generatePdfFromMarkdown(markdown);
     return new NextResponse(pdfBuffer, {

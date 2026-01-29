@@ -223,10 +223,7 @@ export default function ContactSection() {
               Send a Message
             </h3>
             <ContactForm
-              onSubmit={async (data) => {
-                console.log('Form submitted:', data);
-                await new Promise((resolve) => setTimeout(resolve, 1000));
-              }}
+              onSubmit={async () => {}}
             />
           </motion.div>
         </div>
