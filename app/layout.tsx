@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { PostHogProvider } from "../src/components/PostHogProvider";
 import { PageTransitionProvider, PageTransitionWrapper } from "../src/components/PageTransition";
+import CustomCursor from "../src/components/CustomCursor";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
           <Providers>
             <PageTransitionProvider>
               <PageTransitionWrapper>
+                <CustomCursor />
                 {children}
               </PageTransitionWrapper>
             </PageTransitionProvider>
