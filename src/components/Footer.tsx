@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { TransitionLink } from './TransitionLink';
 
 export default function Footer() {
   return (
@@ -8,12 +9,12 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <Link 
+            <TransitionLink 
               href="/" 
               className="flex items-center text-xl font-bold text-gray-900 dark:text-white hover:text-accent dark:hover:text-accent transition duration-300"
             >
               <span className="text-accent">&lt;</span>Daniel<span className="text-accent">/&gt;</span>
-            </Link>
+            </TransitionLink>
           </div>
           
           <div className="flex space-x-6 mb-4 md:mb-0">

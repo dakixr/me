@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
+import { LoadingScreen } from './LoadingScreen';
 
 // Create a context to track transition state
 interface TransitionContextType {
@@ -10,6 +11,10 @@ interface TransitionContextType {
   startTransition: (href: string) => void;
   transitionType: 'fade' | 'slide' | 'scale' | 'none';
   setTransitionType: (type: 'fade' | 'slide' | 'scale' | 'none') => void;
+  isLoading: boolean;
+  setLoading: (loading: boolean) => void;
+  loadingError: boolean;
+  setLoadingError: (error: boolean) => void;
 }
 
 const TransitionContext = createContext<TransitionContextType>({
@@ -17,6 +22,10 @@ const TransitionContext = createContext<TransitionContextType>({
   startTransition: () => {},
   transitionType: 'fade',
   setTransitionType: () => {},
+  isLoading: false,
+  setLoading: () => {},
+  loadingError: false,
+  setLoadingError: () => {},
 });
 
 export const usePageTransition = () => useContext(TransitionContext);
@@ -25,6 +34,8 @@ export const usePageTransition = () => useContext(TransitionContext);
 export function PageTransitionProvider({ children }: { children: ReactNode }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionType, setTransitionType] = useState<'fade' | 'slide' | 'scale' | 'none'>('fade');
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingError, setLoadingError] = useState(false);
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
@@ -67,12 +78,25 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
   // Only provide the real transition functionality after mounting
   // This prevents hydration mismatches
   const contextValue = mounted
-    ? { isTransitioning, startTransition, transitionType, setTransitionType }
+    ? { 
+        isTransitioning, 
+        startTransition, 
+        transitionType, 
+        setTransitionType,
+        isLoading,
+        setLoading: setIsLoading,
+        loadingError,
+        setLoadingError,
+      }
     : { 
         isTransitioning: false, 
         startTransition: (href: string) => router.push(href),
         transitionType: 'none' as const,
         setTransitionType: () => {},
+        isLoading: true,
+        setLoading: () => {},
+        loadingError: false,
+        setLoadingError: () => {},
       };
 
   return (
@@ -108,7 +132,7 @@ const variants = {
 
 // Wrapper component for page content with transitions
 export function PageTransitionWrapper({ children }: { children: ReactNode }) {
-  const { isTransitioning, transitionType } = usePageTransition();
+  const { isTransitioning, transitionType, isLoading, loadingError, setLoading } = usePageTransition();
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
 
@@ -128,35 +152,41 @@ export function PageTransitionWrapper({ children }: { children: ReactNode }) {
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={pathname}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          variants={currentVariant}
-          transition={{ 
-            duration: 0.4,
-            ease: [0.22, 1, 0.36, 1], // Custom easing for more polished feel
-          }}
-          className="w-full min-h-screen"
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
-      
-      {/* Overlay that appears during transitions */}
-      <AnimatePresence>
-        {isTransitioning && (
+      <LoadingScreen 
+        error={loadingError}
+        isLoading={isLoading}
+        onComplete={() => setLoading(false)}
+      >
+        <AnimatePresence mode="wait">
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 pointer-events-none z-50 bg-gradient-to-b from-black/5 to-black/10 dark:from-black/20 dark:to-black/30"
-            transition={{ duration: 0.2 }}
-          />
-        )}
-      </AnimatePresence>
+            key={pathname}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={currentVariant}
+            transition={{ 
+              duration: 0.4,
+              ease: [0.22, 1, 0.36, 1], // Custom easing for more polished feel
+            }}
+            className="w-full min-h-screen"
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
+        
+        {/* Overlay that appears during transitions */}
+        <AnimatePresence>
+          {isTransitioning && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 pointer-events-none z-50 bg-gradient-to-b from-black/5 to-black/10 dark:from-black/20 dark:to-black/30"
+              transition={{ duration: 0.2 }}
+            />
+          )}
+        </AnimatePresence>
+      </LoadingScreen>
     </div>
   );
 } 

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ScrollProgress from './ScrollProgress';
 import ThemeToggle from './ThemeToggle';
+import { TransitionLink } from './TransitionLink';
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
@@ -27,12 +28,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link 
+            <TransitionLink 
               href="/" 
               className="flex items-center text-xl font-bold text-gray-900 dark:text-white hover:text-accent dark:hover:text-accent transition duration-300"
             >
               <span className="text-accent">&lt;</span>Daniel<span className="text-accent">/&gt;</span>
-            </Link>
+            </TransitionLink>
           </div>
           
           {/* Desktop Nav */}
