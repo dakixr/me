@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 
 export default function ScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -27,10 +26,9 @@ export default function ScrollProgress() {
   return (
     <div className="fixed top-0 left-0 right-0 z-30">
       <div className="h-1 bg-gray-200/70 dark:bg-dark-300/70">
-        <motion.div
-          className="h-full bg-accent"
+        <div
+          className="h-full bg-accent transition-all duration-200"
           style={{ width: `${scrollProgress}%` }}
-          transition={{ duration: 0.1 }}
         />
       </div>
     </div>

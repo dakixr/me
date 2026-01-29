@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { PostHogProvider } from "../src/components/PostHogProvider";
-import { PageTransitionProvider, PageTransitionWrapper } from "../src/components/PageTransition";
 
-const inter = Inter({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
   preload: true,
-  variable: "--font-inter",
+  variable: "--font-jetbrains-mono",
 });
 
 export const metadata: Metadata = {
@@ -34,14 +33,10 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://eu.i.posthog.com" />
         <link rel="dns-prefetch" href="https://eu-assets.i.posthog.com" />
       </head>
-      <body suppressHydrationWarning className={`${inter.variable} font-sans bg-light-50 dark:bg-dark-DEFAULT text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300`}>
+      <body suppressHydrationWarning className={`${jetbrainsMono.variable} font-mono bg-light dark:bg-dark text-dark dark:text-light min-h-screen`}>
         <PostHogProvider>
           <Providers>
-            <PageTransitionProvider>
-              <PageTransitionWrapper>
-                {children}
-              </PageTransitionWrapper>
-            </PageTransitionProvider>
+            {children}
           </Providers>
         </PostHogProvider>
       </body>

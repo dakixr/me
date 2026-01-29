@@ -2,56 +2,47 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import ScrollProgress from './ScrollProgress';
 import ThemeToggle from './ThemeToggle';
-import { TransitionLink } from './TransitionLink';
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Theme toggle animation
-  const variants = {
-    open: { opacity: 1, x: 0 },
-    closed: { opacity: 0, x: "100%" },
-  };
-
-  // After mounting, we can show the theme toggle
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
 
   return (
-    <nav className="sticky top-0 z-20 backdrop-blur-2xl backdrop-saturate-150 bg-white/70 dark:bg-gray-900/90 border-b border-white/40 dark:border-gray-700/50 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.45)]">
+    <nav className="sticky top-0 z-20 border-b border-dark-300 dark:border-light-300 bg-light dark:bg-dark">
       <ScrollProgress />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <TransitionLink 
+            <Link 
               href="/" 
-              className="flex items-center text-xl font-bold text-gray-900/90 dark:text-white/90 hover:text-accent dark:hover:text-accent transition duration-300"
+              className="flex items-center text-xl text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200 px-3 py-2"
             >
-              <span className="text-accent">&lt;</span>Daniel<span className="text-accent">/&gt;</span>
-            </TransitionLink>
+              &lt;Daniel/&gt;
+            </Link>
           </div>
           
           {/* Desktop Nav */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
-              <Link href="#about" className="px-3 py-2 rounded-md text-sm font-medium text-gray-800/90 dark:text-white/85 hover:text-accent dark:hover:text-accent hover:bg-white/30 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent transition duration-300">
+              <Link href="#about" className="px-3 py-2 text-sm text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
                 About
               </Link>
-              <Link href="#projects" className="px-3 py-2 rounded-md text-sm font-medium text-gray-800/90 dark:text-white/85 hover:text-accent dark:hover:text-accent hover:bg-white/30 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent transition duration-300">
+              <Link href="#projects" className="px-3 py-2 text-sm text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
                 Projects
               </Link>
-              <Link href="#skills" className="px-3 py-2 rounded-md text-sm font-medium text-gray-800/90 dark:text-white/85 hover:text-accent dark:hover:text-accent hover:bg-white/30 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent transition duration-300">
+              <Link href="#skills" className="px-3 py-2 text-sm text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
                 Skills
               </Link>
-              <Link href="#cv" className="px-3 py-2 rounded-md text-sm font-medium text-gray-800/90 dark:text-white/85 hover:text-accent dark:hover:text-accent hover:bg-white/30 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent transition duration-300">
+              <Link href="#cv" className="px-3 py-2 text-sm text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
                 CV
               </Link>
-              <Link href="#contact" className="px-3 py-2 rounded-md text-sm font-medium text-gray-800/90 dark:text-white/85 hover:text-accent dark:hover:text-accent hover:bg-white/30 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent transition duration-300">
+              <Link href="#contact" className="px-3 py-2 text-sm text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
                 Contact
               </Link>
               <ThemeToggle />
@@ -63,7 +54,7 @@ export default function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-800/90 dark:text-white/85 hover:bg-white/30 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent transition duration-300"
+              className="inline-flex items-center justify-center p-2 text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200"
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
             >
@@ -83,31 +74,27 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      <motion.div 
-        id="mobile-menu"
-        animate={isOpen ? "open" : "closed"}
-        variants={variants}
-        transition={{ duration: 0.3 }}
-        className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/70 dark:bg-gray-900/90 backdrop-blur-2xl backdrop-saturate-150 border-b border-white/40 dark:border-gray-700/50">
-          <Link href="#about" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-800/90 dark:text-white/85 hover:text-accent dark:hover:text-accent hover:bg-white/30 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent transition duration-300">
-            About
-          </Link>
-          <Link href="#projects" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-800/90 dark:text-white/85 hover:text-accent dark:hover:text-accent hover:bg-white/30 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent transition duration-300">
-            Projects
-          </Link>
-          <Link href="#skills" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-800/90 dark:text-white/85 hover:text-accent dark:hover:text-accent hover:bg-white/30 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent transition duration-300">
-            Skills
-          </Link>
-          <Link href="#cv" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-800/90 dark:text-white/85 hover:text-accent dark:hover:text-accent hover:bg-white/30 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent transition duration-300">
-            CV
-          </Link>
-          <Link href="#contact" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-800/90 dark:text-white/85 hover:text-accent dark:hover:text-accent hover:bg-white/30 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent transition duration-300">
-            Contact
-          </Link>
+      {isOpen && (
+        <div id="mobile-menu" className="md:hidden border-t border-dark-300 dark:border-light-300">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            <Link href="#about" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-base text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
+              About
+            </Link>
+            <Link href="#projects" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-base text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
+              Projects
+            </Link>
+            <Link href="#skills" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-base text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
+              Skills
+            </Link>
+            <Link href="#cv" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-base text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
+              CV
+            </Link>
+            <Link href="#contact" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-base text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
+              Contact
+            </Link>
+          </div>
         </div>
-      </motion.div>
+      )}
     </nav>
   );
 } 

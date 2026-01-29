@@ -12,72 +12,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        dark: {
-          DEFAULT: "#121212",
-          100: "#181818",
-          200: "#202020",
-          300: "#303030",
-          400: "#404040",
-          500: "#505050",
-        },
-        accent: {
-          DEFAULT: "#0ea5e9",
-          50: "#f0f9ff",
-          100: "#e0f2fe",
-          200: "#bae6fd",
-          300: "#7dd3fc",
-          400: "#38bdf8",
-          500: "#0ea5e9",
-          600: "#0284c7",
-          700: "#0369a1",
-          800: "#075985",
-          900: "#0c4a6e",
-        },
-        light: {
-          DEFAULT: "#f8fafc",
-          50: "#f8fafc",
-          100: "#f1f5f9",
-          200: "#e2e8f0",
-          300: "#cbd5e1",
-          400: "#94a3b8",
-          500: "#64748b",
-          600: "#475569",
-          700: "#334155",
-          800: "#1e293b",
-          900: "#0f172a",
-        },
+        dark: "#1a1a1a",
+        light: "#f5f5f5",
+      },
+      fontFamily: {
+        mono: ['"JetBrains Mono"', '"Fira Code"', '"Courier New"', 'monospace'],
       },
       typography: ({ theme }: { theme: ThemeResolver }) => ({
         DEFAULT: {
           css: {
             maxWidth: "100%",
-            color: theme("colors.gray.800"),
+            color: theme("colors.dark"),
             h1: {
-              color: theme("colors.gray.900"),
-              fontWeight: "700",
+              color: theme("colors.dark"),
+              fontWeight: "400",
             },
             h2: {
-              color: theme("colors.gray.900"),
-              fontWeight: "600",
+              color: theme("colors.dark"),
+              fontWeight: "400",
             },
             h3: {
-              color: theme("colors.gray.900"),
-              fontWeight: "600",
+              color: theme("colors.dark"),
+              fontWeight: "400",
             },
             h4: {
-              color: theme("colors.gray.900"),
-              fontWeight: "600",
+              color: theme("colors.dark"),
+              fontWeight: "400",
             },
             a: {
-              color: theme("colors.accent.DEFAULT"),
-              textDecoration: "none",
+              color: theme("colors.dark"),
+              textDecoration: "underline",
               "&:hover": {
-                textDecoration: "underline",
+                textDecoration: "none",
               },
             },
             code: {
-              color: theme("colors.indigo.500"),
-              backgroundColor: theme("colors.gray.100"),
+              color: theme("colors.dark"),
+              backgroundColor: "#e0e0e0",
               borderRadius: theme("borderRadius.md"),
               padding: theme("spacing.1"),
             },
@@ -85,28 +56,28 @@ const config: Config = {
         },
         dark: {
           css: {
-            color: theme("colors.gray.300"),
+            color: "#e0e0e0",
             h1: {
-              color: theme("colors.gray.100"),
+              color: theme("colors.light"),
             },
             h2: {
-              color: theme("colors.gray.100"),
+              color: theme("colors.light"),
             },
             h3: {
-              color: theme("colors.gray.100"),
+              color: theme("colors.light"),
             },
             h4: {
-              color: theme("colors.gray.100"),
+              color: theme("colors.light"),
             },
             a: {
-              color: theme("colors.accent.DEFAULT"),
+              color: theme("colors.light"),
             },
             code: {
-              color: theme("colors.indigo.400"),
-              backgroundColor: theme("colors.dark.200"),
+              color: theme("colors.light"),
+              backgroundColor: "#2d2d2d",
             },
             strong: {
-              color: theme("colors.gray.100"),
+              color: theme("colors.light"),
             },
           },
         },

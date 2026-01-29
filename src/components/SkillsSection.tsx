@@ -1,12 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import SkillBar from './SkillBar';
 
 const skills = [
   {
     category: 'Languages',
-    color: 'from-blue-500 to-blue-700',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
@@ -23,7 +21,6 @@ const skills = [
   },
   {
     category: 'Web Development',
-    color: 'from-green-500 to-green-700',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
@@ -44,7 +41,6 @@ const skills = [
   },
   {
     category: 'Data & ML',
-    color: 'from-purple-500 to-purple-700',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -63,7 +59,6 @@ const skills = [
   },
   {
     category: 'Cloud & DevOps',
-    color: 'from-orange-500 to-orange-700',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path>
@@ -80,7 +75,6 @@ const skills = [
   },
   {
     category: 'Tools & Environment',
-    color: 'from-pink-500 to-pink-700',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -97,7 +91,6 @@ const skills = [
   },
   {
     category: 'Methodologies',
-    color: 'from-indigo-500 to-indigo-700',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="6" cy="6" r="3"></circle>
@@ -113,7 +106,6 @@ const skills = [
   },
   {
     category: 'Soft Skills',
-    color: 'from-teal-500 to-teal-700',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -132,71 +124,30 @@ const skills = [
 ];
 
 export default function SkillsSection() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-  
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    show: { y: 0, opacity: 1 }
-  };
-
   return (
     <section id="skills" className="py-20 bg-gray-50 dark:bg-dark-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <motion.h2 
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold text-gray-900 dark:text-white mb-2"
-          >
+          <h2 className="text-3xl text-dark dark:text-light mb-2">
             Technical Skills
-          </motion.h2>
-          <motion.div 
-            initial={{ opacity: 0, width: 0 }}
-            whileInView={{ opacity: 1, width: '80px' }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="h-1 bg-accent mx-auto mb-4"
-          />
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-          >
+          </h2>
+          <div className="h-px w-20 bg-dark dark:bg-light mx-auto mb-4" />
+          <p className="text-lg text-dark-500 dark:text-light-300 max-w-2xl mx-auto">
             A comprehensive overview of my technical skills, tools, and methodologies I use to solve complex problems.
-          </motion.p>
+          </p>
         </div>
         
-        <motion.div 
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skills.map((skillCategory, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={item}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="bg-white dark:bg-dark-100 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-dark-300"
+              className="bg-white dark:bg-dark-100 rounded-xl p-6 border border-dark-300 dark:border-light-300"
             >
               <div className="flex items-center mb-6">
-                <div className={`mr-3 bg-gradient-to-br ${skillCategory.color} p-2 rounded-lg text-white`}>
+                <div className="mr-3 bg-dark dark:bg-light p-2 rounded-lg text-light dark:text-dark">
                   {skillCategory.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{skillCategory.category}</h3>
+                <h3 className="text-xl text-dark dark:text-light">{skillCategory.category}</h3>
               </div>
               <div className="space-y-4">
                 {skillCategory.items.map((skill, itemIndex) => (
@@ -205,13 +156,12 @@ export default function SkillsSection() {
                     skill={skill.name}
                     proficiency={skill.proficiency}
                     description={skill.description}
-                    delay={itemIndex * 0.1}
                   />
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

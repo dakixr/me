@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import ContactForm from "./ContactForm";
 
 export default function ContactSection() {
@@ -8,59 +7,27 @@ export default function ContactSection() {
     <section id="contact" className="py-24 bg-gray-50 dark:bg-dark">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-block"
-          >
-            <span className="px-4 py-1.5 rounded-full text-sm font-medium bg-accent/10 text-accent dark:bg-accent/20 dark:text-accent mb-4 inline-block">
-              Contact
-            </span>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
-          >
+          <span className="px-4 py-1.5 rounded-full text-sm font-medium bg-accent/10 text-accent dark:bg-accent/20 dark:text-accent mb-4 inline-block">
+            Contact
+          </span>
+          <h2 className="text-4xl text-dark dark:text-light mb-4">
             Get In Touch
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, width: 0 }}
-            whileInView={{ opacity: 1, width: "80px" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="h-1 bg-accent mx-auto mb-6"
-          />
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-          >
+          </h2>
+          <div className="h-px w-20 bg-accent mx-auto mb-6" />
+          <p className="text-lg text-dark-500 dark:text-light-300 max-w-2xl mx-auto">
             Feel free to reach out!
-          </motion.p>
+          </p>
         </div>
-
+ 
         <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-white dark:bg-dark-100 rounded-xl p-8 shadow-lg dark:shadow-none"
-          >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+          <div className="bg-white dark:bg-dark-100 rounded-xl p-8 shadow-lg dark:shadow-none">
+            <h3 className="text-2xl text-dark dark:text-light mb-8">
               Contact Information
             </h3>
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="group flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-300">
+              <div className="flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-200">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-300">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-200">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -82,16 +49,15 @@ export default function ContactSection() {
                   </p>
                   <a
                     href="mailto:dakixr@gmail.com"
-                    className="text-base font-medium text-gray-900 dark:text-white hover:text-accent dark:hover:text-accent transition duration-300"
+                    className="text-base text-dark dark:text-light hover:text-accent dark:hover:text-accent transition duration-200"
                   >
                     dakixr@gmail.com
                   </a>
                 </div>
-              </div>
-
-              <div className="group flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-300">
+              </div> 
+              <div className="flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-200">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-300">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-200">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -117,15 +83,14 @@ export default function ContactSection() {
                   <p className="text-sm font-medium text-gray-500 dark:text-gray-200 mb-0.5">
                     Location
                   </p>
-                  <p className="text-base font-medium text-gray-900 dark:text-white">
+                  <p className="text-base text-dark dark:text-light">
                     Luxembourg, Luxembourg
                   </p>
                 </div>
-              </div>
-
-              <div className="group flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-300">
+              </div> 
+              <div className="flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-200">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-300">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-200">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -147,16 +112,15 @@ export default function ContactSection() {
                   </p>
                   <a
                     href="tel:+34610655215"
-                    className="text-base font-medium text-gray-900 dark:text-white hover:text-accent dark:hover:text-accent transition duration-300"
+                    className="text-base text-dark dark:text-light hover:text-accent dark:hover:text-accent transition duration-200"
                   >
                     +34 610 655 215
                   </a>
                 </div>
-              </div>
-
-              <div className="group flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-300">
+              </div> 
+              <div className="flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-200">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-300">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-200">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -179,7 +143,7 @@ export default function ContactSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="GitHub Profile"
-                      className="text-gray-600 hover:text-accent dark:text-gray-200 dark:hover:text-accent transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded"
+                      className="text-gray-600 hover:text-accent dark:text-gray-200 dark:hover:text-accent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent rounded"
                     >
                       <svg
                         className="w-5 h-5"
@@ -194,7 +158,7 @@ export default function ContactSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="LinkedIn Profile"
-                      className="text-gray-600 hover:text-accent dark:text-gray-200 dark:hover:text-accent transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded"
+                      className="text-gray-600 hover:text-accent dark:text-gray-200 dark:hover:text-accent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent rounded"
                     >
                       <svg
                         className="w-5 h-5"
@@ -208,24 +172,18 @@ export default function ContactSection() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
-
+ 
         <div className="max-w-3xl mx-auto mt-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white dark:bg-dark-100 rounded-xl p-8 shadow-lg dark:shadow-none"
-          >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+          <div className="bg-white dark:bg-dark-100 rounded-xl p-8 shadow-lg dark:shadow-none">
+            <h3 className="text-2xl text-dark dark:text-light mb-8">
               Send a Message
             </h3>
             <ContactForm
               onSubmit={async () => {}}
             />
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
