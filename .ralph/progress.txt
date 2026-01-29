@@ -233,3 +233,5 @@ Verification:
 [2026-01-29T06:08:08.050334+00:00] === Harness started (max_iterations=100, max_failures=10) ===
 [2026-01-29T06:08:08.051787+00:00] Resuming item FEAT-013 (attempt 1): Implement interactive project filters and search
 [2026-01-29T06:10:52.710030+00:00] Item FEAT-013 completed successfully
+[2026-01-29T06:10:52.873231+00:00] Starting item PERF-001 (attempt 1): Optimize performance and improve Core Web Vitals
+[2026-01-29T06:18:42.212451+00:00] Item PERF-001 completed successfully

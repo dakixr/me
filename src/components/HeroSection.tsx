@@ -2,8 +2,13 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import ThreeScene from "./ThreeScene";
+import dynamic from "next/dynamic";
 import MagneticButton from "./MagneticButton";
+
+const ThreeScene = dynamic(() => import("./ThreeScene"), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function HeroSection() {
   return (
