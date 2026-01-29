@@ -1,8 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useRef, useState } from 'react';
 import ProjectCard from './ProjectCard';
+import ProjectFilter from './ProjectFilter';
 
 type Project = {
   title: string;
@@ -14,6 +15,8 @@ type Project = {
 
 export default function ProjectsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const projects: Project[] = [
     {
@@ -60,6 +63,55 @@ export default function ProjectsSection() {
     },
   ];
 
+  const allTechnologies = projects.flatMap((project) => project.technologies);
+
+  const filteredProjects = projects.filter((project) => {
+    const matchesFilter = activeFilter === 'All' || project.technologies.includes(activeFilter);
+    const matchesSearch = 
+      searchQuery === '' ||
+      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.technologies.some((tech) => 
+        tech.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    return matchesFilter && matchesSearch;
+  });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      scale: 0.95
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.4,
+        ease: [0.25, 0.1, 0.25, 1]
+      }
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      scale: 0.95,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+
   function scrollLeft() {
     if (containerRef.current) {
       containerRef.current.scrollBy({ left: -400, behavior: 'smooth' });
@@ -102,6 +154,37 @@ export default function ProjectsSection() {
             Explore my recent personal projects that showcase my technical skills and problem-solving abilities.
           </motion.p>
         </div>
+
+        <div className="mb-8 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-md mx-auto"
+          >
+            <input
+              type="text"
+              placeholder="Search projects..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-dark-300 text-gray-900 dark:text-white border border-gray-200 dark:border-dark-400 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <ProjectFilter
+              technologies={allTechnologies}
+              activeFilter={activeFilter}
+              onFilterChange={setActiveFilter}
+            />
+          </motion.div>
+        </div>
         
         <div className="relative">
           <motion.button
@@ -129,21 +212,67 @@ export default function ProjectsSection() {
           </motion.button>
 
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {projects.map((project, index) => (
-              <ProjectCard key={index} project={project} index={index} />
-            ))}
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                className="contents"
+              >
+                {filteredProjects.map((project, index) => (
+                  <motion.div
+                    key={`${project.title}-${activeFilter}-${searchQuery}`}
+                    variants={itemVariants}
+                    layout
+                  >
+                    <ProjectCard project={project} index={index} />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           <div 
             ref={containerRef}
             className="md:hidden overflow-x-auto snap-x snap-mandatory flex gap-6 pb-8 -mx-4 px-4 scrollbar-hide"
           >
-            {projects.map((project, index) => (
-              <div key={index} className="snap-center shrink-0 w-[85vw] max-w-sm">
-                <ProjectCard project={project} index={index} />
-              </div>
-            ))}
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={`${project.title}-${activeFilter}-${searchQuery}`}
+                  variants={itemVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  layout
+                  className="snap-center shrink-0 w-[85vw] max-w-sm"
+                >
+                  <ProjectCard project={project} index={index} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
+
+          {filteredProjects.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="col-span-full text-center py-16"
+            >
+              <p className="text-gray-500 dark:text-gray-400 text-lg">
+                No projects found matching your criteria.
+              </p>
+              <button
+                onClick={() => {
+                  setActiveFilter('All');
+                  setSearchQuery('');
+                }}
+                className="mt-4 px-6 py-2 bg-accent text-white rounded-lg hover:bg-accent-dark transition-colors duration-300"
+              >
+                Clear filters
+              </button>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>
