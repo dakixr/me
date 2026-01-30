@@ -11,12 +11,12 @@ const skills = [
       </svg>
     ),
     items: [
-      { name: 'Python', proficiency: 95, description: 'Expert level with 8+ years experience' },
-      { name: 'Java', proficiency: 85, description: 'Strong backend development skills' },
-      { name: 'Kotlin', proficiency: 75, description: 'Modern Android development' },
-      { name: 'C', proficiency: 70, description: 'Systems programming foundation' },
-      { name: 'SQL', proficiency: 90, description: 'Advanced query optimization' },
-      { name: 'Bash', proficiency: 85, description: 'Efficient automation scripting' },
+      { name: 'Python', description: 'Expert level with 8+ years experience' },
+      { name: 'Java', description: 'Strong backend development skills' },
+      { name: 'Kotlin', description: 'Modern Android development' },
+      { name: 'C', description: 'Systems programming foundation' },
+      { name: 'SQL', description: 'Advanced query optimization' },
+      { name: 'Bash', description: 'Efficient automation scripting' },
     ],
   },
   {
@@ -31,12 +31,12 @@ const skills = [
       </svg>
     ),
     items: [
-      { name: 'Django', proficiency: 90, description: 'Full-stack web applications' },
-      { name: 'HTMX', proficiency: 85, description: 'Modern hypermedia-driven apps' },
-      { name: 'htpy', proficiency: 80, description: 'Python HTML framework' },
-      { name: 'HTML/CSS', proficiency: 90, description: 'Responsive design mastery' },
-      { name: 'JavaScript', proficiency: 80, description: 'Client-side interactivity' },
-      { name: 'REST APIs', proficiency: 88, description: 'API design and integration' },
+      { name: 'Django', description: 'Full-stack web applications' },
+      { name: 'HTMX', description: 'Modern hypermedia-driven apps' },
+      { name: 'htpy', description: 'Python HTML framework' },
+      { name: 'HTML/CSS', description: 'Responsive design mastery' },
+      { name: 'JavaScript', description: 'Client-side interactivity' },
+      { name: 'REST APIs', description: 'API design and integration' },
     ],
   },
   {
@@ -49,12 +49,12 @@ const skills = [
       </svg>
     ),
     items: [
-      { name: 'Pandas', proficiency: 92, description: 'Data manipulation expert' },
-      { name: 'Polars', proficiency: 80, description: 'High-performance data processing' },
-      { name: 'NumPy', proficiency: 88, description: 'Numerical computing foundation' },
-      { name: 'scikit-learn', proficiency: 82, description: 'Machine learning pipelines' },
-      { name: 'Keras', proficiency: 78, description: 'Deep learning models' },
-      { name: 'Data Warehousing', proficiency: 85, description: 'Enterprise data architecture' },
+      { name: 'Pandas', description: 'Data manipulation expert' },
+      { name: 'Polars', description: 'High-performance data processing' },
+      { name: 'NumPy', description: 'Numerical computing foundation' },
+      { name: 'scikit-learn', description: 'Machine learning pipelines' },
+      { name: 'Keras', description: 'Deep learning models' },
+      { name: 'Data Warehousing', description: 'Enterprise data architecture' },
     ],
   },
   {
@@ -66,11 +66,11 @@ const skills = [
       </svg>
     ),
     items: [
-      { name: 'AWS', proficiency: 85, description: 'Redshift, ECS, ECR, EC2, Lambda' },
-      { name: 'Pulumi IaC', proficiency: 80, description: 'Infrastructure as Code' },
-      { name: 'Docker', proficiency: 88, description: 'Containerization expertise' },
-      { name: 'CI/CD', proficiency: 90, description: 'Automated deployment pipelines' },
-      { name: 'Git', proficiency: 92, description: 'Version control mastery' },
+      { name: 'AWS', description: 'Redshift, ECS, ECR, EC2, Lambda' },
+      { name: 'Pulumi IaC', description: 'Infrastructure as Code' },
+      { name: 'Docker', description: 'Containerization expertise' },
+      { name: 'CI/CD', description: 'Automated deployment pipelines' },
+      { name: 'Git', description: 'Version control mastery' },
     ],
   },
   {
@@ -83,10 +83,10 @@ const skills = [
       </svg>
     ),
     items: [
-      { name: 'Unix/Linux', proficiency: 92, description: 'System administration' },
-      { name: 'Jupyter', proficiency: 88, description: 'Data science notebooks' },
-      { name: 'VS Code', proficiency: 95, description: 'Primary development environment' },
-      { name: 'Vim Motions', proficiency: 75, description: 'Efficient text editing' },
+      { name: 'Unix/Linux', description: 'System administration' },
+      { name: 'Jupyter', description: 'Data science notebooks' },
+      { name: 'VS Code', description: 'Primary development environment' },
+      { name: 'Vim Motions', description: 'Efficient text editing' },
     ],
   },
   {
@@ -99,9 +99,9 @@ const skills = [
       </svg>
     ),
     items: [
-      { name: 'Agile (Scrum)', proficiency: 88, description: 'Team collaboration and sprints' },
-      { name: 'Continuous Integration', proficiency: 90, description: 'Automated testing and integration' },
-      { name: 'TDD', proficiency: 85, description: 'Test-driven development' },
+      { name: 'Agile (Scrum)', description: 'Team collaboration and sprints' },
+      { name: 'Continuous Integration', description: 'Automated testing and integration' },
+      { name: 'TDD', description: 'Test-driven development' },
     ],
   },
   {
@@ -115,17 +115,17 @@ const skills = [
       </svg>
     ),
     items: [
-      { name: 'Communication', proficiency: 92, description: 'Clear and effective collaboration' },
-      { name: 'Problem-Solving', proficiency: 95, description: 'Analytical thinking approach' },
-      { name: 'Adaptability', proficiency: 90, description: 'Quick learning and flexibility' },
-      { name: 'Team Leadership', proficiency: 85, description: 'Mentoring and guidance' },
+      { name: 'Communication', description: 'Clear and effective collaboration' },
+      { name: 'Problem-Solving', description: 'Analytical thinking approach' },
+      { name: 'Adaptability', description: 'Quick learning and flexibility' },
+      { name: 'Team Leadership', description: 'Mentoring and guidance' },
     ],
   },
 ];
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-dark-200">
+    <section id="skills" className="py-20 bg-light dark:bg-dark">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <h2 className="text-3xl text-dark dark:text-light mb-2">
@@ -136,33 +136,34 @@ export default function SkillsSection() {
             A comprehensive overview of my technical skills, tools, and methodologies I use to solve complex problems.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skills.map((skillCategory, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-dark-100 rounded-xl p-6 border border-dark-300 dark:border-light-300"
+              className="bg-light dark:bg-dark p-6 border border-dark-300 dark:border-light-300"
             >
               <div className="flex items-center mb-6">
-                <div className="mr-3 bg-dark dark:bg-light p-2 rounded-lg text-light dark:text-dark">
+                <div className="mr-3 border border-dark-300 dark:border-light-300 p-2 text-dark dark:text-light">
                   {skillCategory.icon}
                 </div>
                 <h3 className="text-xl text-dark dark:text-light">{skillCategory.category}</h3>
               </div>
-              <div className="space-y-4">
+              <ul className="space-y-2">
                 {skillCategory.items.map((skill, itemIndex) => (
-                  <SkillBar
-                    key={itemIndex}
-                    skill={skill.name}
-                    proficiency={skill.proficiency}
-                    description={skill.description}
-                  />
+                  <li key={itemIndex} className="flex items-start">
+                    <span className="text-dark dark:text-light mr-2">•</span>
+                    <SkillBar
+                      skill={skill.name}
+                      description={skill.description}
+                    />
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-} 
+}

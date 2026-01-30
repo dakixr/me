@@ -29,42 +29,42 @@ export default function Footer() {
   }, [clickCount]);
 
   return (
-    <footer className="bg-gray-100 dark:bg-dark-300 py-8">
+    <footer className="bg-light dark:bg-dark border-t border-dark-300 dark:border-light-300 py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <TransitionLink 
-              href="/" 
-              className="flex items-center text-xl font-bold text-gray-900 dark:text-white hover:text-accent dark:hover:text-accent transition duration-300"
+            <TransitionLink
+              href="/"
+              className="flex items-center text-xl font-bold text-dark dark:text-light hover:underline transition duration-300"
             >
-              <span className="text-accent">&lt;</span>Daniel<span className="text-accent">/&gt;</span>
+              Daniel
             </TransitionLink>
           </div>
-          
+
           <div className="flex space-x-6 mb-4 md:mb-0">
-            <Link href="#about" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded px-1">
+            <Link href="#about" className="text-dark-500 dark:text-light-300 hover:text-dark dark:hover:text-light hover:underline transition duration-300 focus:outline-none">
               About
             </Link>
-            <Link href="#projects" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded px-1">
+            <Link href="#projects" className="text-dark-500 dark:text-light-300 hover:text-dark dark:hover:text-light hover:underline transition duration-300 focus:outline-none">
               Projects
             </Link>
-            <Link href="#skills" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded px-1">
+            <Link href="#skills" className="text-dark-500 dark:text-light-300 hover:text-dark dark:hover:text-light hover:underline transition duration-300 focus:outline-none">
               Skills
             </Link>
-            <Link href="#cv" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded px-1">
+            <Link href="#cv" className="text-dark-500 dark:text-light-300 hover:text-dark dark:hover:text-light hover:underline transition duration-300 focus:outline-none">
               CV
             </Link>
-            <Link href="#contact" className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition duration-300 focus:outline-none focus:ring-2 focus:ring-accent rounded px-1">
+            <Link href="#contact" className="text-dark-500 dark:text-light-300 hover:text-dark dark:hover:text-light hover:underline transition duration-300 focus:outline-none">
               Contact
             </Link>
           </div>
-          
+
           <div className="flex space-x-4">
             <a
               href="https://github.com/dakixr"
               target="_blank"
               rel="noopener noreferrer"
-              className="icon-btn text-gray-600 dark:text-gray-400"
+              className="text-dark dark:text-light hover:underline transition-colors duration-200"
               aria-label="GitHub"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -75,7 +75,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/daniel-rodr%C3%ADguez-mariblanca-00a26a173/"
               target="_blank"
               rel="noopener noreferrer"
-              className="icon-btn text-gray-600 dark:text-gray-400"
+              className="text-dark dark:text-light hover:underline transition-colors duration-200"
               aria-label="LinkedIn"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -87,21 +87,21 @@ export default function Footer() {
 
         {showMessage && (
           <div className="mt-4 text-center">
-            <p className="text-sm font-semibold text-accent">🎉 You found the secret! Click the footer 5 times for confetti!</p>
+            <p className="text-sm font-semibold text-dark dark:text-light">You found the secret!</p>
           </div>
         )}
 
-        <div className="mt-6 pt-6 border-t border-gray-300 dark:border-dark-400 text-center">
+        <div className="mt-6 pt-6 border-t border-dark-300 dark:border-light-300 text-center">
           <button
             onClick={handleCopyrightClick}
-            className="text-sm text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded px-2"
+            className="text-sm text-dark-500 dark:text-light-300 hover:text-dark dark:hover:text-light transition-colors focus:outline-none"
             aria-label="Copyright information"
             data-testid="footer-copyright"
           >
-            © {new Date().getFullYear()} Daniel Rodríguez Mariblanca. All rights reserved.
+            © {new Date().getFullYear()} Daniel Rodriguez Mariblanca. All rights reserved.
           </button>
         </div>
       </div>
     </footer>
   );
-} 
+}

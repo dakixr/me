@@ -120,7 +120,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
       <div className="grid gap-6 md:grid-cols-2">
         <div className="relative">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="name" className="block text-sm font-medium text-dark dark:text-light mb-2">
             Name
           </label>
           <motion.input
@@ -132,10 +132,10 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             onFocus={() => setErrors((prev) => ({ ...prev, name: undefined }))}
             variants={fieldVariants}
             whileFocus="focus"
-            className={`w-full px-4 py-3 rounded-lg border-2 transition-colors duration-200 ${
+            className={`w-full px-4 py-3  border-2 transition-colors duration-200 ${
               errors.name
                 ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                : 'border-gray-200 dark:border-gray-700 focus:border-accent focus:ring-accent dark:bg-dark-200 dark:text-white'
+                : 'border-dark-300 dark:border-light-300 focus:border-accent focus:ring-accent dark:bg-dark dark:text-light'
             } focus:outline-none focus:ring-2 focus:ring-opacity-50`}
             disabled={isSubmitting}
             aria-invalid={!!errors.name}
@@ -159,7 +159,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         </div>
 
         <div className="relative">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-dark dark:text-light mb-2">
             Email
           </label>
           <motion.input
@@ -171,10 +171,10 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             onFocus={() => setErrors((prev) => ({ ...prev, email: undefined }))}
             variants={fieldVariants}
             whileFocus="focus"
-            className={`w-full px-4 py-3 rounded-lg border-2 transition-colors duration-200 ${
+            className={`w-full px-4 py-3  border-2 transition-colors duration-200 ${
               errors.email
                 ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                : 'border-gray-200 dark:border-gray-700 focus:border-accent focus:ring-accent dark:bg-dark-200 dark:text-white'
+                : 'border-dark-300 dark:border-light-300 focus:border-accent focus:ring-accent dark:bg-dark dark:text-light'
             } focus:outline-none focus:ring-2 focus:ring-opacity-50`}
             disabled={isSubmitting}
             aria-invalid={!!errors.email}
@@ -199,7 +199,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       </div>
 
       <div className="relative">
-        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="subject" className="block text-sm font-medium text-dark dark:text-light mb-2">
           Subject
         </label>
         <motion.input
@@ -211,10 +211,10 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           onFocus={() => setErrors((prev) => ({ ...prev, subject: undefined }))}
           variants={fieldVariants}
           whileFocus="focus"
-          className={`w-full px-4 py-3 rounded-lg border-2 transition-colors duration-200 ${
+          className={`w-full px-4 py-3  border-2 transition-colors duration-200 ${
             errors.subject
               ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-              : 'border-gray-200 dark:border-gray-700 focus:border-accent focus:ring-accent dark:bg-dark-200 dark:text-white'
+              : 'border-dark-300 dark:border-light-300 focus:border-accent focus:ring-accent dark:bg-dark dark:text-light'
           } focus:outline-none focus:ring-2 focus:ring-opacity-50`}
           disabled={isSubmitting}
           aria-invalid={!!errors.subject}
@@ -238,7 +238,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       </div>
 
       <div className="relative">
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="message" className="block text-sm font-medium text-dark dark:text-light mb-2">
           Message
         </label>
         <motion.textarea
@@ -250,10 +250,10 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
           variants={fieldVariants}
           whileFocus="focus"
           rows={5}
-          className={`w-full px-4 py-3 rounded-lg border-2 transition-colors duration-200 ${
+          className={`w-full px-4 py-3  border-2 transition-colors duration-200 ${
             errors.message
               ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-              : 'border-gray-200 dark:border-gray-700 focus:border-accent focus:ring-accent dark:bg-dark-200 dark:text-white'
+              : 'border-dark-300 dark:border-light-300 focus:border-accent focus:ring-accent dark:bg-dark dark:text-light'
           } focus:outline-none focus:ring-2 focus:ring-opacity-50 resize-none`}
           disabled={isSubmitting}
           aria-invalid={!!errors.message}
@@ -274,7 +274,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             </motion.p>
           )}
         </AnimatePresence>
-        <div className="mt-1 text-sm text-gray-500 dark:text-gray-400" aria-live="polite">
+        <div className="mt-1 text-sm text-dark-500 dark:text-light-300" aria-live="polite">
           {formData.message.length}/10 characters minimum
         </div>
       </div>
@@ -285,7 +285,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
+            className="p-4  bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
             role="alert"
           >
             <div className="flex items-center">
@@ -314,7 +314,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="p-4 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
+            className="p-4  bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
             role="alert"
           >
             <div className="flex items-center">
@@ -344,7 +344,7 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         disabled={isSubmitting}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className="w-full px-6 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-100"
+        className="w-full px-6 py-3 bg-dark dark:bg-light text-light dark:text-dark font-semibold border-2 border-dark dark:border-light hover:bg-light hover:text-dark dark:hover:bg-dark dark:hover:text-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none"
       >
         {isSubmitting ? (
           <span className="flex items-center justify-center">

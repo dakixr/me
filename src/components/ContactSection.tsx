@@ -4,30 +4,27 @@ import ContactForm from "./ContactForm";
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-24 bg-gray-50 dark:bg-dark">
+    <section id="contact" className="py-24 bg-light dark:bg-dark">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="px-4 py-1.5 rounded-full text-sm font-medium bg-accent/10 text-accent dark:bg-accent/20 dark:text-accent mb-4 inline-block">
-            Contact
-          </span>
           <h2 className="text-4xl text-dark dark:text-light mb-4">
             Get In Touch
           </h2>
-          <div className="h-px w-20 bg-accent mx-auto mb-6" />
+          <div className="h-px w-20 bg-dark dark:bg-light mx-auto mb-6" />
           <p className="text-lg text-dark-500 dark:text-light-300 max-w-2xl mx-auto">
             Feel free to reach out!
           </p>
         </div>
  
         <div className="max-w-3xl mx-auto">
-          <div className="bg-white dark:bg-dark-100 rounded-xl p-8 shadow-lg dark:shadow-none">
+          <div className="bg-light dark:bg-dark p-8 border border-dark-300 dark:border-light-300">
             <h3 className="text-2xl text-dark dark:text-light mb-8">
               Contact Information
             </h3>
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-200">
+              <div className="flex items-center space-x-4 p-4 border border-dark-300 dark:border-light-300 transition-all duration-200">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-200">
+                  <div className="w-12 h-12 flex items-center justify-center border border-dark-300 dark:border-light-300 text-dark dark:text-light transition-colors duration-200">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -44,20 +41,20 @@ export default function ContactSection() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-200 mb-0.5">
+                  <p className="text-sm font-medium text-dark-500 dark:text-light-300 mb-0.5">
                     Email
                   </p>
                   <a
                     href="mailto:dakixr@gmail.com"
-                    className="text-base text-dark dark:text-light hover:text-accent dark:hover:text-accent transition duration-200"
+                    className="text-base text-dark dark:text-light hover:underline transition duration-200"
                   >
                     dakixr@gmail.com
                   </a>
                 </div>
               </div> 
-              <div className="flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-200">
+              <div className="flex items-center space-x-4 p-4 border border-dark-300 dark:border-light-300 transition-all duration-200">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-200">
+                  <div className="w-12 h-12 flex items-center justify-center border border-dark-300 dark:border-light-300 text-dark dark:text-light transition-colors duration-200">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -80,7 +77,7 @@ export default function ContactSection() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-200 mb-0.5">
+                  <p className="text-sm font-medium text-dark-500 dark:text-light-300 mb-0.5">
                     Location
                   </p>
                   <p className="text-base text-dark dark:text-light">
@@ -88,9 +85,9 @@ export default function ContactSection() {
                   </p>
                 </div>
               </div> 
-              <div className="flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-200">
+              <div className="flex items-center space-x-4 p-4 border border-dark-300 dark:border-light-300 transition-all duration-200">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-200">
+                  <div className="w-12 h-12 flex items-center justify-center border border-dark-300 dark:border-light-300 text-dark dark:text-light transition-colors duration-200">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -107,20 +104,20 @@ export default function ContactSection() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-200 mb-0.5">
+                  <p className="text-sm font-medium text-dark-500 dark:text-light-300 mb-0.5">
                     Phone
                   </p>
                   <a
                     href="tel:+34610655215"
-                    className="text-base text-dark dark:text-light hover:text-accent dark:hover:text-accent transition duration-200"
+                    className="text-base text-dark dark:text-light hover:underline transition duration-200"
                   >
                     +34 610 655 215
                   </a>
                 </div>
               </div> 
-              <div className="flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-dark-300 border border-transparent hover:border-accent/20 dark:hover:border-accent/30 transition-all duration-200">
+              <div className="flex items-center space-x-4 p-4 border border-dark-300 dark:border-light-300 transition-all duration-200">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white dark:bg-dark-200 dark:text-accent transition-colors duration-200">
+                  <div className="w-12 h-12 flex items-center justify-center border border-dark-300 dark:border-light-300 text-dark dark:text-light transition-colors duration-200">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -143,7 +140,7 @@ export default function ContactSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="GitHub Profile"
-                      className="text-gray-600 hover:text-accent dark:text-gray-200 dark:hover:text-accent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent rounded"
+                      className="text-dark dark:text-light hover:underline transition-colors duration-200 focus:outline-none"
                     >
                       <svg
                         className="w-5 h-5"
@@ -158,7 +155,7 @@ export default function ContactSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="LinkedIn Profile"
-                      className="text-gray-600 hover:text-accent dark:text-gray-200 dark:hover:text-accent transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent rounded"
+                      className="text-dark dark:text-light hover:underline transition-colors duration-200 focus:outline-none"
                     >
                       <svg
                         className="w-5 h-5"
@@ -176,7 +173,7 @@ export default function ContactSection() {
         </div>
  
         <div className="max-w-3xl mx-auto mt-12">
-          <div className="bg-white dark:bg-dark-100 rounded-xl p-8 shadow-lg dark:shadow-none">
+          <div className="bg-light dark:bg-dark p-8 border border-dark-300 dark:border-light-300">
             <h3 className="text-2xl text-dark dark:text-light mb-8">
               Send a Message
             </h3>

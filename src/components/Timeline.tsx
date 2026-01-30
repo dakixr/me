@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface Experience {
   title: string;
@@ -97,133 +97,96 @@ const experiences: Experience[] = [
   }
 ];
 
-interface TimelineNodeProps {
+interface ExperienceCardProps {
   experience: Experience;
-  index: number;
-  isExpanded: boolean;
-  onToggle: () => void;
-  isMobile: boolean;
 }
 
-function TimelineNode({ experience, index, isExpanded, onToggle, isMobile }: TimelineNodeProps) {
+function ExperienceCard({ experience }: ExperienceCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      onToggle();
+      setIsExpanded(!isExpanded);
     }
   };
- 
+
   return (
-    <div className={`${isMobile ? 'w-full' : 'w-full md:w-1/3 lg:w-1/4 flex-shrink-0 px-4'}`}>
-      <div className="relative">
-        <div
-          className={`w-12 h-12 rounded-full bg-dark dark:bg-light flex items-center justify-center text-light dark:text-dark font-bold text-lg mx-auto mb-4 cursor-pointer z-10 relative focus:outline-none focus:ring-4 focus:ring-accent/30 ${
-            isExpanded ? 'ring-4 ring-accent/30' : ''
-          }`}
-          onClick={onToggle}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
-          role="button"
-          aria-expanded={isExpanded}
-          aria-label={`Toggle details for ${experience.company}`}
-        >
-          {index + 1}
+    <div
+      className={`bg-light dark:bg-dark p-6 cursor-pointer border border-dark-300 dark:border-light-300 focus:outline-none transition-all duration-200 ${
+        isExpanded ? 'border-dark dark:border-light' : ''
+      }`}
+      onClick={() => setIsExpanded(!isExpanded)}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="button"
+      aria-expanded={isExpanded}
+      aria-label={`${experience.company} - ${experience.title}, Press Enter to ${isExpanded ? 'collapse' : 'expand'}`}
+    >
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <h3 className="text-lg text-dark dark:text-light">
+            {experience.company}
+          </h3>
+          <p className="text-sm text-dark-500 dark:text-light-300">{experience.title}</p>
         </div>
- 
-        <div
-          className={`bg-white dark:bg-dark-100 rounded-xl p-6 cursor-pointer border-2 focus:outline-none focus:ring-2 focus:ring-accent transition-all duration-200 ${
-            isExpanded ? 'border-accent shadow-lg' : 'border-transparent shadow-md hover:shadow-lg'
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={`h-5 w-5 text-dark dark:text-light transition-transform duration-200 ${
+            isExpanded ? 'rotate-180' : ''
           }`}
-          onClick={onToggle}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
-          role="button"
-          aria-expanded={isExpanded}
-          aria-label={`${experience.company} - ${experience.title}, Press Enter to ${isExpanded ? 'collapse' : 'expand'}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
         >
-          <div className="flex items-center justify-between mb-3">
-            <div>
-              <h3 className="text-lg text-dark dark:text-light">
-                {experience.company}
-              </h3>
-              <p className="text-sm text-accent">{experience.title}</p>
-            </div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className={`h-5 w-5 text-dark-500 dark:text-light-400 transition-transform duration-200 ${
-                isExpanded ? 'rotate-180' : ''
-              }`}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
- 
-          <div className="flex items-center gap-2 mb-3 text-sm text-dark-500 dark:text-light-400">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span>{experience.location}</span>
-            <span className="mx-2">•</span>
-            <span>{experience.period}</span>
-          </div>
- 
-          {isExpanded && (
-            <div className="space-y-4">
-              {experience.missions.map((mission, missionIndex) => (
-                <div key={missionIndex} className="border-t border-dark-300 dark:border-light-300 pt-3">
-                  <h4 className="text-dark dark:text-light mb-2">
-                    {mission.name}
-                  </h4>
-                  <ul className="space-y-1">
-                    {mission.description.map((item, itemIndex) => (
-                      <li key={itemIndex} className="text-sm text-dark-500 dark:text-light-400 flex items-start">
-                        <span className="text-accent mr-2 mt-1">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  {mission.techStack && (
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      {mission.techStack.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-2 py-1 bg-dark-100 dark:bg-light-300 text-accent text-xs rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
       </div>
+
+      <div className="flex items-center gap-2 text-sm text-dark-500 dark:text-light-300">
+        <span>{experience.location}</span>
+        <span>•</span>
+        <span>{experience.period}</span>
+      </div>
+
+      {isExpanded && (
+        <div className="space-y-4 mt-4">
+          {experience.missions.map((mission, missionIndex) => (
+            <div key={missionIndex} className="border-t border-dark-300 dark:border-light-300 pt-3">
+              <h4 className="text-dark dark:text-light mb-2">
+                {mission.name}
+              </h4>
+              <ul className="space-y-1">
+                {mission.description.map((item, itemIndex) => (
+                  <li key={itemIndex} className="text-sm text-dark-500 dark:text-light-300 flex items-start">
+                    <span className="text-dark dark:text-light mr-2 mt-1">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              {mission.techStack && (
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {mission.techStack.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-2 py-1 border border-dark-300 dark:border-light-300 text-dark dark:text-light text-xs"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
 
 export default function Timeline() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
- 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
- 
   return (
-    <div className="py-20 bg-gray-50 dark:bg-dark-200">
+    <section id="experience" className="py-20 bg-light dark:bg-dark">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <h2 className="text-3xl text-dark dark:text-light mb-2">
@@ -234,34 +197,16 @@ export default function Timeline() {
             My journey through impactful roles and projects in software engineering.
           </p>
         </div>
- 
-        <div className="relative">
-          <div className={`absolute top-6 ${isMobile ? 'left-6 w-1 h-full' : 'left-1/2 w-0.5 h-full'} bg-dark dark:bg-light origin-top`} />
- 
-          <div className={`${isMobile ? 'ml-12' : 'flex md:overflow-x-auto md:pb-8 md:px-4'} ${!isMobile ? 'hide-scrollbar' : ''}`}>
-            {experiences.map((experience, index) => (
-              <TimelineNode
-                key={index}
-                experience={experience}
-                index={index}
-                isExpanded={expandedIndex === index}
-                onToggle={() => setExpandedIndex(expandedIndex === index ? null : index)}
-                isMobile={isMobile}
-              />
-            ))}
-          </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+          {experiences.map((experience, index) => (
+            <ExperienceCard
+              key={index}
+              experience={experience}
+            />
+          ))}
         </div>
       </div>
- 
-      <style jsx global>{`
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
-    </div>
+    </section>
   );
 }

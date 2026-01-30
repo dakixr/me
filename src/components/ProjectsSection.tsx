@@ -6,7 +6,7 @@ import ProjectCard from './ProjectCard';
 type Project = {
   title: string;
   description: string;
-  link: string;
+  link?: string;
   image: string;
   technologies: string[];
 };
@@ -16,6 +16,27 @@ export default function ProjectsSection() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const projects: Project[] = [
+    {
+      title: 'Ionisium',
+      description: 'SaaS platform for mass mailing communications with PDF watermarking, tracking, and delivery management via AWS Lambda.',
+      link: 'https://ionisium.es',
+      image: '/projects/ionisium.jpg',
+      technologies: ['Python', 'Django', 'HTMX', 'htpy', 'Celery', 'AWS', 'PostgreSQL', 'Docker', 'Pulumi'],
+    },
+    {
+      title: 'CostCompiler',
+      description: 'B2B web application for cost controlling communications, featuring Excel processing, data analysis, and automated reporting.',
+      link: 'https://costcompiler.com',
+      image: '/projects/costcompiler.jpg',
+      technologies: ['Python', 'Django', 'HTMX', 'htpy', 'Celery', 'Pandas', 'Polars', 'AWS', 'Docker'],
+    },
+    {
+      title: 'xpyxl',
+      description: 'Create styled Excel reports with declarative Python. Tailwind-inspired utility classes for typography, colors, and layouts without manual coordinates.',
+      link: 'https://github.com/dakixr/xpyxl',
+      image: '/projects/xpyxl.jpg',
+      technologies: ['Python', 'Excel', 'openpyxl', 'xlsxwriter', 'Declarative', 'Reporting'],
+    },
     {
       title: 'htmx-download',
       description: 'HTMX extension for file downloads with 27 stars, enabling server-driven generation and direct browser downloads.',
@@ -102,35 +123,37 @@ export default function ProjectsSection() {
           {filteredProjects.map((project, index) => (
             <div
               key={index}
-              className="bg-gray-50 dark:bg-dark-100 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+              className="border border-dark-300 dark:border-light-300 bg-light dark:bg-dark overflow-hidden"
             >
-              <div className="h-48 bg-gray-300 dark:bg-dark-300 flex items-center justify-center">
-                <div className="text-4xl font-bold text-accent">{project.title}</div>
+              <div className="h-48 border-b border-dark-300 dark:border-light-300 flex items-center justify-center">
+                <div className="text-4xl font-bold text-dark dark:text-light">{project.title}</div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+                <h3 className="text-xl font-bold text-dark dark:text-light mb-2">{project.title}</h3>
+                <p className="text-dark-500 dark:text-light-300 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-dark-300 text-gray-800 dark:text-gray-200 rounded"
+                      className="px-2 py-1 text-xs font-medium border border-dark-300 dark:border-light-300 text-dark dark:text-light"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-accent hover:text-accent-dark transition-colors duration-300"
-                >
-                  Visit Project
-                  <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01 1.414 1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path>
-                  </svg>
-                </a>
+{project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-dark dark:text-light hover:underline transition-colors duration-300"
+                  >
+                    {project.link.includes('github.com') ? 'View on GitHub' : 'Visit'}
+                    <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01 1.414 1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path>
+                    </svg>
+                  </a>
+                )}
               </div>
             </div>
           ))}
