@@ -31,6 +31,20 @@ export default function ProjectsSection() {
       technologies: ['Python', 'Django', 'HTMX', 'htpy', 'Celery', 'Pandas', 'Polars', 'AWS', 'Docker'],
     },
     {
+      title: 'wt',
+      description: 'Git Worktree Toolkit - A CLI for managing git worktrees in feature-branch workflows with hooks, auto-setup, and PR integration.',
+      link: 'https://github.com/dakixr/wt',
+      image: '/projects/wt.jpg',
+      technologies: ['Python', 'Git', 'CLI', 'Worktrees', 'Developer Tools'],
+    },
+    {
+      title: 'ralph',
+      description: 'CLI harness for running LLM agents on PRD-driven tasks, automating development workflows with AI assistance.',
+      link: 'https://github.com/dakixr/ralph',
+      image: '/projects/ralph.jpg',
+      technologies: ['Python', 'LLM', 'CLI', 'AI Agents', 'Automation'],
+    },
+    {
       title: 'xpyxl',
       description: 'Create styled Excel reports with declarative Python. Tailwind-inspired utility classes for typography, colors, and layouts without manual coordinates.',
       link: 'https://github.com/dakixr/xpyxl',
