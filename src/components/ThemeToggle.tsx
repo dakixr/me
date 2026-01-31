@@ -12,48 +12,42 @@ export default function ThemeToggle() {
 
   if (!mounted) return null;
 
+  const isDark = theme === 'dark';
+
   return (
     <motion.button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="relative p-2 rounded-full overflow-hidden icon-btn"
-      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      className="p-2 rounded-lg text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-100 transition-colors"
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
       <AnimatePresence mode="wait" initial={false}>
-        {theme === 'dark' ? (
-          <motion.svg
-            key="sun"
-            initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
-            animate={{ rotate: 0, opacity: 1, scale: 1 }}
-            exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-gray-700 dark:text-yellow-300"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-              clipRule="evenodd"
-            />
-          </motion.svg>
-        ) : (
-          <motion.svg
-            key="moon"
-            initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
-            animate={{ rotate: 0, opacity: 1, scale: 1 }}
-            exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-gray-700 dark:text-indigo-300"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-          </motion.svg>
-        )}
+        <motion.div
+          key={isDark ? 'moon' : 'sun'}
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 20, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          {isDark ? (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66-1.41 1.41" />
+              <path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+          )}
+        </motion.div>
       </AnimatePresence>
     </motion.button>
   );
