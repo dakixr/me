@@ -16,16 +16,7 @@ const CVSection = dynamic(() => import("@/components/CVSection"), {
   loading: () => <div className="h-screen w-full bg-light dark:bg-dark" />,
 });
 
-const ContactSection = dynamic(() => import("@/components/ContactSection"), {
-  loading: () => <div className="h-screen w-full bg-light dark:bg-dark" />,
-});
-
 const Footer = dynamic(() => import("@/components/Footer"));
-
-const EasterEggs = dynamic(() => import("@/components/EasterEggs"), {
-  ssr: false,
-  loading: () => null,
-});
 
 export default function HomeClient() {
   return (
@@ -34,13 +25,11 @@ export default function HomeClient() {
         Skip to main content
       </a>
       <Navbar />
-      <EasterEggs />
       <div id="main-content">
         <HeroSection />
         <ProjectsSection />
         <SkillsSection />
         <CVSection />
-        <ContactSection />
         <Footer />
       </div>
     </main>
