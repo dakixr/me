@@ -25,9 +25,6 @@ const Footer = dynamic(() => import("@/components/Footer"));
 export default function HomeClient() {
   return (
     <main>
-      <a href="#main-content" className="skip-to-content">
-        Skip to main content
-      </a>
       <Navbar />
       <div id="main-content">
         <HeroSection />

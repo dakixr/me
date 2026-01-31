@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import ScrollProgress from './ScrollProgress';
 import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
@@ -15,7 +14,6 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-20 border-b border-dark-300 dark:border-light-300 bg-light dark:bg-dark">
-      <ScrollProgress />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -44,6 +42,9 @@ export default function Navbar() {
               </Link>
               <Link href="#contact" className="px-3 py-2 text-sm text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
                 Contact
+              </Link>
+              <Link href="/blog" className="px-3 py-2 text-sm text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
+                Blog
               </Link>
               <ThemeToggle />
             </div>
@@ -91,6 +92,9 @@ export default function Navbar() {
             </Link>
             <Link href="#contact" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-base text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
               Contact
+            </Link>
+            <Link href="/blog" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-base text-dark dark:text-light hover:bg-dark-100 dark:hover:bg-light-200">
+              Blog
             </Link>
           </div>
         </div>
