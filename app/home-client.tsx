@@ -16,6 +16,10 @@ const CVSection = dynamic(() => import("@/components/CVSection"), {
   loading: () => <div className="h-screen w-full bg-light dark:bg-dark" />,
 });
 
+const ContactSection = dynamic(() => import("@/components/ContactSection"), {
+  loading: () => <div className="h-screen w-full bg-light dark:bg-dark" />,
+});
+
 const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function HomeClient() {
@@ -30,6 +34,7 @@ export default function HomeClient() {
         <ProjectsSection />
         <SkillsSection />
         <CVSection />
+        <ContactSection />
         <Footer />
       </div>
     </main>

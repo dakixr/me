@@ -1,7 +1,5 @@
 "use client";
 
-import ContactForm from "./ContactForm";
-
 export default function ContactSection() {
   return (
     <section id="contact" className="py-24 bg-light dark:bg-dark">
@@ -172,16 +170,6 @@ export default function ContactSection() {
           </div>
         </div>
  
-        <div className="max-w-3xl mx-auto mt-12">
-          <div className="bg-light dark:bg-dark p-8 border border-dark-300 dark:border-light-300">
-            <h3 className="text-2xl text-dark dark:text-light mb-8">
-              Send a Message
-            </h3>
-            <ContactForm
-              onSubmit={async () => {}}
-            />
-          </div>
-        </div>
       </div>
     </section>
   );
