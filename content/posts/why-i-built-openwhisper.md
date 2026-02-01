@@ -1,73 +1,51 @@
 ---
-title: "Why I Built OpenWhisper: Frustrated with OpenAI's Pricing Model"
+title: "Why I Built OpenWhisper: Cheaper Than WisprFlow for Coding"
 date: "2026-02-02"
-description: "How OpenAI's Whisper flow pricing and limited free tier led me to build my own macOS transcription app that costs a fraction of the price."
-tags: ["macOS", "OpenAI", "Whisper", "Swift", "Side Projects", "Pricing"]
+description: "Frustrated with WisprFlow's markup on OpenAI's Whisper API, I built a native macOS app for voice-to-text during coding sessions."
+tags: ["macOS", "OpenAI", "Whisper", "Swift", "Coding", "Developer Tools"]
 ---
 
-Last week, I needed a reliable way to transcribe audio on my Mac. I found [WisprFlow](https://wisprflow.ai/)—a wrapper around OpenAI's Whisper API. But when I saw the pricing, I got pissed.
+I use coding assistants like Codex, OpenCode, and Claude Code daily. Sometimes explaining context out loud is faster than typing it. I looked at [WisprFlow](https://wisprflow.ai/) for this, but the pricing pissed me off.
 
-## The Problem: Expensive Wrapper for a Simple API
+## The Problem
 
-WisprFlow is a neat service, but it's essentially a **paid wrapper around OpenAI's Whisper API** with markup:
+WisprFlow is just a wrapper around OpenAI's Whisper API with markup:
 
-- **WisprFlow pricing:** Premium subscription or expensive per-minute rates
-- **What it actually does:** Calls OpenAI's Whisper API ($0.006/min) and adds a margin
-- **Free tier limitations:** Minimal usage before hitting paywalls
+- **WisprFlow:** Premium subscription or expensive per-minute rates
+- **What it actually does:** Calls OpenAI Whisper ($0.006/min) and adds margin -- maybe they have their own models idaf.
+- **Free tier:** Minimal usage before paywalls
 
-For a simple use case—transcribing voice notes, meetings, or random audio clips—paying for a middleman felt wrong. I don't need a fancy flow service. I just want to press a key, talk, and get text.
+I just want to press a key, explain my code context verbally, and get text. I don't need a middleman.
 
-## The Solution: Build It Myself
+## The Solution
 
-So I did what any reasonable engineer would do: I built a native macOS app that calls OpenAI's Whisper API directly, skipping the expensive middleman.
+**OpenWhisper** = native macOS app that calls OpenAI Whisper API directly.
 
-### Enter OpenWhisper
+- **Hold Fn** → talk → **release Fn** → text inserted into your active app
+- Native menubar with live waveform
+- Tracks usage + cost transparently
+- Pure Swift, no bloat
 
-**OpenWhisper** is a hold-to-talk transcription app for macOS:
+## Why It Matters for Coding
 
-- **Press Fn** → talk → **release Fn** → text appears in your active app
-- **Native menubar app** with live waveform visualization
-- **Tracks usage + cost** so you know what you're spending
-- **Pure Swift**, no Electron, no bloat
-- **Uses OpenAI Whisper API directly** (no wrappers, no markup)
+When working with AI coding assistants, **context is king**. Sometimes explaining architecture out loud is faster than writing it:
 
-### What's Different
+- "Add a cache layer with Redis using this key pattern..."
+- "Refactor this function to use async/await with error handling..."
+- "Generate unit tests for these edge cases..."
 
-Unlike WisprFlow's premium pricing, OpenWhisper:
-
-- ✅ **Uses OpenAI's Whisper API directly** at $0.006/min (no markup)
-- ✅ **No subscription fees**—pay only for what you use
-- ✅ **Transparent costs**—you see exactly what you're spending
-- ✅ **Runs locally** on your Mac with a native menubar app
-- ✅ **Open source**—you can see exactly what it does
+Talking beats typing for complex context.
 
 ## The Economics
 
-Here's the math that made me build this:
+- **WisprFlow:** Wrapper markup on top of OpenAI pricing
+- **OpenAI Whisper API (direct):** $0.006/minute
+- **OpenWhisper:** Direct API calls, no markup, you control the key
 
-- **WisprFlow:** Premium subscription or expensive per-minute rates with markup
-- **OpenAI Whisper API (direct):** $0.006/minute—no markup, no middleman
-- **OpenWhisper:** Direct API calls, full cost transparency, you control the key
+I'll pay for good tools. I won't pay for unnecessary middlemen.
 
-I'm not against paying for good tools. I'm against **paying for a wrapper that marks up a perfectly good API**.
+## Try It
 
-## What I Learned
-
-Building OpenWhisper taught me a few things:
-
-1. **macOS accessibility APIs** are powerful (detecting Fn key globally)
-2. **Audio recording** on macOS is simpler than I thought
-3. **Keychain integration** for secure API key storage is a must
-4. **Hold-to-talk UX** is surprisingly intuitive
-
-## Try It Out
-
-If you're tired of overpriced wrappers around simple APIs, check out [OpenWhisper on GitHub](https://github.com/dakixr/open-whisper).
-
-It's free, open source, and does one thing well: **transcribe audio using OpenAI's Whisper API directly**—no middleman, no markup.
+[OpenWhisper on GitHub](https://github.com/dakixr/open-whisper) — free, open source, does one thing well.
 
 Sometimes the best tool is the one you build yourself.
-
----
-
-*Have you ever built something just because the existing options were too expensive or over-engineered? I'd love to hear your stories.*
