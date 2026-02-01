@@ -17,6 +17,13 @@ export default function ProjectsSection() {
 
   const projects: Project[] = [
     {
+      title: 'OpenWhisper',
+      description: 'Hold-to-talk transcription for macOS using OpenAI Whisper API. Press Fn to talk, release to insert text. Tracks usage + cost. Native menubar app with live waveform.',
+      link: 'https://github.com/dakixr/open-whisper',
+      image: '/projects/openwhisper.svg',
+      technologies: ['Swift', 'macOS', 'OpenAI API', 'Whisper', 'Audio', 'Keychain', 'Accessibility'],
+    },
+    {
       title: 'Ionisium',
       description: 'SaaS platform for mass mailing communications with PDF watermarking, tracking, and delivery management via AWS Lambda.',
       link: 'https://ionisium.es',
