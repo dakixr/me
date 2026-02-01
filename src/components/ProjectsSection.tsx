@@ -52,18 +52,11 @@ export default function ProjectsSection() {
       technologies: ['Python', 'Excel', 'openpyxl', 'xlsxwriter', 'Declarative', 'Reporting'],
     },
     {
-      title: 'htmx-download',
-      description: 'HTMX extension for file downloads with 27 stars, enabling server-driven generation and direct browser downloads.',
-      link: 'https://github.com/dakixr/htmx-download',
-      image: '/projects/htmx-download.jpg',
-      technologies: ['JavaScript', 'HTMX', 'Extensions', 'File handling', 'Browser APIs'],
-    },
-    {
-      title: 'htmx-global-indicator',
-      description: 'Global loading indicator with a delayed spinner and 24 stars, handling HTMX request state centrally.',
-      link: 'https://github.com/dakixr/htmx-global-indicator',
-      image: '/projects/htmx-global-indicator.jpg',
-      technologies: ['JavaScript', 'HTMX', 'Extensions', 'UX', 'Loading states'],
+      title: 'htmx-extensions',
+      description: 'Lightweight HTMX extensions: smart loading indicators, file downloads, and programmatic history restoration. Consolidated collection of previously separate extensions (27+ combined stars). No build step required.',
+      link: 'https://github.com/dakixr/htmx-extensions',
+      image: '/projects/htmx-extensions.jpg',
+      technologies: ['JavaScript', 'HTMX', 'Extensions', 'Browser APIs', 'Loading states', 'History API'],
     },
     {
       title: 'FormCraftSuite',
@@ -85,13 +78,6 @@ export default function ProjectsSection() {
       link: 'https://github.com/dakixr/Hackathon-AXA',
       image: '/projects/hackathon-axa.jpg',
       technologies: ['JavaScript', 'JHipster', 'Spring Boot', 'Angular', 'Full-stack'],
-    },
-    {
-      title: 'htmx-restore-history',
-      description: 'Manual browser history handling for HTMX with 6 stars, enabling explicit navigation control.',
-      link: 'https://github.com/dakixr/htmx-restore-history',
-      image: '/projects/htmx-restore-history.jpg',
-      technologies: ['JavaScript', 'HTMX', 'Extensions', 'Browser history', 'Navigation'],
     },
   ];
 
