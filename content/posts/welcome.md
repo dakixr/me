@@ -5,8 +5,6 @@ description: "An introduction to my blog where I share thoughts on software engi
 tags: ["introduction", "general"]
 ---
 
-# Welcome to My Blog
-
 This is my first blog post! Here I'll share my thoughts on software engineering, projects I'm working on, and various tech topics.
 
 ## What to Expect
