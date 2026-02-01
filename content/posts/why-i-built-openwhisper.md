@@ -5,8 +5,6 @@ description: "How OpenAI's Whisper flow pricing and limited free tier led me to 
 tags: ["macOS", "OpenAI", "Whisper", "Swift", "Side Projects", "Pricing"]
 ---
 
-# Why I Built OpenWhisper: Frustrated with WisprFlow's Pricing
-
 Last week, I needed a reliable way to transcribe audio on my Mac. I found [WisprFlow](https://wisprflow.ai/)—a wrapper around OpenAI's Whisper API. But when I saw the pricing, I got pissed.
 
 ## The Problem: Expensive Wrapper for a Simple API

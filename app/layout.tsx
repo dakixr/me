@@ -32,6 +32,20 @@ export default function RootLayout({
         <link rel="preconnect" href="https://eu-assets.i.posthog.com" />
         <link rel="dns-prefetch" href="https://eu.i.posthog.com" />
         <link rel="dns-prefetch" href="https://eu-assets.i.posthog.com" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const theme = localStorage.getItem('theme') || 'dark';
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              })()
+            `,
+          }}
+        />
       </head>
       <body suppressHydrationWarning className={`${jetbrainsMono.variable} font-mono bg-light dark:bg-dark text-dark dark:text-light min-h-screen`}>
         <PostHogProvider>
