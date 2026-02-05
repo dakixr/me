@@ -17,6 +17,13 @@ export default function ProjectsSection() {
 
   const projects: Project[] = [
     {
+      title: 'CodeReview Deploy',
+      description: 'AI code review toolset with a deployable Django control plane for GitHub PRs + a local CLI wrapper around OpenCode. Live demo: https://code-review.dakixr.dev/',
+      link: 'https://github.com/dakixr/code-review',
+      image: '/projects/code-review.jpg',
+      technologies: ['Python', 'Django', 'Celery', 'HTMX', 'htpy', 'GitHub', 'GitHub App', 'OpenCode', 'LLM', 'Docker'],
+    },
+    {
       title: 'OpenWhisper',
       description: 'Hold-to-talk transcription for macOS using OpenAI Whisper API. Press Fn to talk, release to insert text. Tracks usage + cost. Native menubar app with live waveform.',
       link: 'https://github.com/dakixr/open-whisper',
