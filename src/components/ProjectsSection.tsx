@@ -6,7 +6,11 @@ import ProjectCard from './ProjectCard';
 type Project = {
   title: string;
   description: string;
+  /** Fallback single link (legacy) */
   link?: string;
+  /** Preferred explicit links */
+  liveLink?: string;
+  githubLink?: string;
   image: string;
   technologies: string[];
 };
@@ -17,9 +21,10 @@ export default function ProjectsSection() {
 
   const projects: Project[] = [
     {
-      title: 'CodeReview Deploy',
-      description: 'AI code review toolset with a deployable Django control plane for GitHub PRs + a local CLI wrapper around OpenCode. Live demo: https://code-review.dakixr.dev/',
-      link: 'https://github.com/dakixr/code-review',
+      title: 'AI Code Review',
+      description: 'AI code review toolset with GitHub PR integration (GitHub App) plus a standalone local CLI (built on OpenCode) for repo-agnostic reviews.',
+      liveLink: 'https://code-review.dakixr.dev/',
+      githubLink: 'https://github.com/dakixr/code-review',
       image: '/projects/code-review.jpg',
       technologies: ['Python', 'Django', 'Celery', 'HTMX', 'htpy', 'GitHub', 'GitHub App', 'OpenCode', 'LLM', 'Docker'],
     },
@@ -155,18 +160,36 @@ export default function ProjectsSection() {
                     </span>
                   ))}
                 </div>
-{project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-dark dark:text-light hover:underline transition-colors duration-300"
-                  >
-                    {project.link.includes('github.com') ? 'View on GitHub' : 'Visit'}
-                    <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01 1.414 1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path>
-                    </svg>
-                  </a>
+{(project.liveLink || project.githubLink || project.link) && (
+                  <div className="flex flex-wrap gap-4">
+                    {(project.liveLink || (project.link && !project.link.includes('github.com') ? project.link : undefined)) && (
+                      <a
+                        href={project.liveLink || project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-dark dark:text-light hover:underline transition-colors duration-300"
+                      >
+                        Live
+                        <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01 1.414 1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path>
+                        </svg>
+                      </a>
+                    )}
+
+                    {(project.githubLink || (project.link && project.link.includes('github.com') ? project.link : undefined)) && (
+                      <a
+                        href={project.githubLink || project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-dark dark:text-light hover:underline transition-colors duration-300"
+                      >
+                        GitHub
+                        <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01 1.414 1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path>
+                        </svg>
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
             </div>
